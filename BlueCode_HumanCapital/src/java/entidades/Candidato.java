@@ -40,6 +40,18 @@ public class Candidato implements Serializable {
         this.email = email;
         this.estado = estado;
     }
+    
+    public Candidato(String nombres, String apellidos, String expectativas, String direccion, String telefono, String titulo, String universidad, String email, int estado) {
+        this.nombres = nombres;
+        this.apellidos = apellidos;
+        this.expectativas = expectativas;
+        this.direccion = direccion;
+        this.telefono = telefono;
+        this.titulo = titulo;
+        this.universidad = universidad;
+        this.email = email;
+        this.estado = estado;
+    }
 
     public int getId() {
         return id;
