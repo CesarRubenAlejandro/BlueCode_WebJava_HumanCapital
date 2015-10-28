@@ -33,7 +33,10 @@ public class DatabaseConnector {
     public static void insertar(Candidato candidato) {
         try {
             PreparedStatement pstmt = con.prepareStatement("INSERT INTO Candidatos VALUES(?,?,?,?,?,?,?,?,?,?)");
-            //pstmt
+            pstmt.setInt(1, candidato.getId());
+            //pstmt.setString(2, candidato.getNombres());
+            pstmt.setString(3, candidato.getApellidos());
+            //pstmt.setString(4, candidato.get)
         } catch (SQLException ex) {
             Logger.getLogger(DatabaseConnector.class.getName()).log(Level.SEVERE, null, ex);
         }
