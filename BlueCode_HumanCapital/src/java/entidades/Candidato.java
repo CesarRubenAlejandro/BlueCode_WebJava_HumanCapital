@@ -69,7 +69,7 @@ public class Candidato implements Serializable {
         return expectativas;
     }
 
-    public void setExpectativasEconomicas(String expectativas) {
+    public void setExpectativas(String expectativas) {
         this.expectativas = expectativas;
     }
 
