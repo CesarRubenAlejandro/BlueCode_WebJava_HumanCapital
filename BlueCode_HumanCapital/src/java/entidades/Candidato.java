@@ -65,7 +65,7 @@ public class Candidato implements Serializable {
         this.apellidos = apellidos;
     }
 
-    public String getExpectativasEconomicas() {
+    public String getExpectativas() {
         return expectativas;
     }
 
