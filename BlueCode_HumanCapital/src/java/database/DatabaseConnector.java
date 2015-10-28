@@ -30,16 +30,23 @@ public class DatabaseConnector {
         }
     }
     
-    public static void insertar(Candidato candidato) {
+    public static void insertarCandidato(Candidato candidato) {
         try {
-            PreparedStatement pstmt = con.prepareStatement("INSERT INTO Candidatos VALUES(?,?,?,?,?,?,?,?,?,?)");
-            pstmt.setInt(1, candidato.getId());
-            //pstmt.setString(2, candidato.getNombres());
-            pstmt.setString(3, candidato.getApellidos());
-            //pstmt.setString(4, candidato.get)
+            PreparedStatement pstmt = con.prepareStatement("INSERT INTO Candidatos"
+                    + "(nombres, apellidos, titulo, universidad, email, telefono, direccion, expectativas, estado) "
+                    + "VALUES(?,?,?,?,?,?,?,?,?)");
+            pstmt.setString(1, candidato.getNombres());
+            pstmt.setString(2, candidato.getApellidos());
+            pstmt.setString(3, candidato.getTitulo());
+            pstmt.setString(4, candidato.getUniversidad());
+            pstmt.setString(5, candidato.getEmail());
+            pstmt.setString(6, candidato.getTelefono());
+            pstmt.setString(7, candidato.getDireccion());
+            pstmt.setString(8, candidato.getExpectativas());
+            pstmt.setInt(9, candidato.getEstado());
+            pstmt.executeUpdate();
         } catch (SQLException ex) {
             Logger.getLogger(DatabaseConnector.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
     }
 }
