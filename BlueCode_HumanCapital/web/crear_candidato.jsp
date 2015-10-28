@@ -13,5 +13,8 @@
     </head>
     <body>
         <h1>Nuevo Candidato</h1>
+        <form action="CandidatosServlet">
+            
+        </form>
     </body>
 </html>

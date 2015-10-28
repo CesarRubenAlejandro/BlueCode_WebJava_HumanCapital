@@ -6,6 +6,7 @@
 package entidades;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 /**
  *
@@ -20,8 +21,10 @@ public class Candidato implements Serializable {
     String telefono;
     String titulo;
     String email;
+    ArrayList<String> certificados;
+    ArrayList<String> trabajosAnteriores;
 
-    public Candidato(int id, String nombreDePila, String apellidos, String expectativasEconomicas, String direccion, String telefono, String titulo) {
+    public Candidato(int id, String nombreDePila, String apellidos, String expectativasEconomicas, String direccion, String telefono, String titulo, String email, ArrayList<String> certificados, ArrayList<String> trabajosAnteriores) {
         this.id = id;
         this.nombreDePila = nombreDePila;
         this.apellidos = apellidos;
@@ -29,6 +32,25 @@ public class Candidato implements Serializable {
         this.direccion = direccion;
         this.telefono = telefono;
         this.titulo = titulo;
+        this.email = email;
+        this.certificados = certificados;
+        this.trabajosAnteriores = trabajosAnteriores;
+    }
+
+    public ArrayList<String> getCertificados() {
+        return certificados;
+    }
+
+    public void setCertificados(ArrayList<String> certificados) {
+        this.certificados = certificados;
+    }
+
+    public ArrayList<String> getTrabajosAnteriores() {
+        return trabajosAnteriores;
+    }
+
+    public void setTrabajosAnteriores(ArrayList<String> trabajosAnteriores) {
+        this.trabajosAnteriores = trabajosAnteriores;
     }
 
     public int getId() {
