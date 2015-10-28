@@ -18,7 +18,7 @@ public class Candidato implements Serializable {
     public static final int RECHAZADO = 2;
     
     private int id;
-    private String nombreDePila;
+    private String nombres;
     private String apellidos;
     private String expectativasEconomicas;
     private String direccion;
@@ -28,9 +28,9 @@ public class Candidato implements Serializable {
     private String email;
     private int estado;
 
-    public Candidato(int id, String nombreDePila, String apellidos, String expectativasEconomicas, String direccion, String telefono, String titulo, String universidad, String email, int estado) {
+    public Candidato(int id, String nombres, String apellidos, String expectativasEconomicas, String direccion, String telefono, String titulo, String universidad, String email, int estado) {
         this.id = id;
-        this.nombreDePila = nombreDePila;
+        this.nombres = nombres;
         this.apellidos = apellidos;
         this.expectativasEconomicas = expectativasEconomicas;
         this.direccion = direccion;
@@ -41,20 +41,20 @@ public class Candidato implements Serializable {
         this.estado = estado;
     }
 
+    public String getNombres() {
+        return nombres;
+    }
+
+    public void setNombres(String nombres) {
+        this.nombres = nombres;
+    }
+
     public int getId() {
         return id;
     }
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public String getNombreDePila() {
-        return nombreDePila;
-    }
-
-    public void setNombreDePila(String nombreDePila) {
-        this.nombreDePila = nombreDePila;
     }
 
     public String getApellidos() {
