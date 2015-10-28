@@ -6,26 +6,29 @@
 package entidades;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 
 /**
  *
  * @author Cesar
  */
 public class Candidato implements Serializable {
-    int id;
-    String nombreDePila;
-    String apellidos;
-    String expectativasEconomicas;
-    String direccion;
-    String telefono;
-    String titulo;
-    String email;
-    String estado;
-    ArrayList<String> certificados;
-    ArrayList<String> trabajosAnteriores;
+    
+    public static final int PENDIENTE = 0;
+    public static final int ACEPTADO = 1;
+    public static final int RECHAZADO = 2;
+    
+    private int id;
+    private String nombreDePila;
+    private String apellidos;
+    private String expectativasEconomicas;
+    private String direccion;
+    private String telefono;
+    private String titulo;
+    private String universidad;
+    private String email;
+    private int estado;
 
-    public Candidato(int id, String nombreDePila, String apellidos, String expectativasEconomicas, String direccion, String telefono, String titulo, String email, String estado, ArrayList<String> certificados, ArrayList<String> trabajosAnteriores) {
+    public Candidato(int id, String nombreDePila, String apellidos, String expectativasEconomicas, String direccion, String telefono, String titulo, String universidad, String email, int estado) {
         this.id = id;
         this.nombreDePila = nombreDePila;
         this.apellidos = apellidos;
@@ -33,34 +36,9 @@ public class Candidato implements Serializable {
         this.direccion = direccion;
         this.telefono = telefono;
         this.titulo = titulo;
+        this.universidad = universidad;
         this.email = email;
         this.estado = estado;
-        this.certificados = certificados;
-        this.trabajosAnteriores = trabajosAnteriores;
-    }
-    
-    public String getEstado() {
-        return estado;
-    }
-
-    public void setEstado(String estado) {
-        this.estado = estado;
-    }
-
-    public ArrayList<String> getCertificados() {
-        return certificados;
-    }
-
-    public void setCertificados(ArrayList<String> certificados) {
-        this.certificados = certificados;
-    }
-
-    public ArrayList<String> getTrabajosAnteriores() {
-        return trabajosAnteriores;
-    }
-
-    public void setTrabajosAnteriores(ArrayList<String> trabajosAnteriores) {
-        this.trabajosAnteriores = trabajosAnteriores;
     }
 
     public int getId() {
@@ -119,6 +97,14 @@ public class Candidato implements Serializable {
         this.titulo = titulo;
     }
 
+    public String getUniversidad() {
+        return universidad;
+    }
+
+    public void setUniversidad(String universidad) {
+        this.universidad = universidad;
+    }
+
     public String getEmail() {
         return email;
     }
@@ -126,5 +112,12 @@ public class Candidato implements Serializable {
     public void setEmail(String email) {
         this.email = email;
     }
-    
+
+    public int getEstado() {
+        return estado;
+    }
+
+    public void setEstado(int estado) {
+        this.estado = estado;
+    }
 }
