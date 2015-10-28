@@ -20,7 +20,7 @@ public class Candidato implements Serializable {
     private int id;
     private String nombres;
     private String apellidos;
-    private String expectativasEconomicas;
+    private String expectativas;
     private String direccion;
     private String telefono;
     private String titulo;
@@ -28,25 +28,17 @@ public class Candidato implements Serializable {
     private String email;
     private int estado;
 
-    public Candidato(int id, String nombres, String apellidos, String expectativasEconomicas, String direccion, String telefono, String titulo, String universidad, String email, int estado) {
+    public Candidato(int id, String nombres, String apellidos, String expectativas, String direccion, String telefono, String titulo, String universidad, String email, int estado) {
         this.id = id;
         this.nombres = nombres;
         this.apellidos = apellidos;
-        this.expectativasEconomicas = expectativasEconomicas;
+        this.expectativas = expectativas;
         this.direccion = direccion;
         this.telefono = telefono;
         this.titulo = titulo;
         this.universidad = universidad;
         this.email = email;
         this.estado = estado;
-    }
-
-    public String getNombres() {
-        return nombres;
-    }
-
-    public void setNombres(String nombres) {
-        this.nombres = nombres;
     }
 
     public int getId() {
@@ -56,7 +48,15 @@ public class Candidato implements Serializable {
     public void setId(int id) {
         this.id = id;
     }
+    
+    public String getNombres() {
+        return nombres;
+    }
 
+    public void setNombres(String nombres) {
+        this.nombres = nombres;
+    }
+    
     public String getApellidos() {
         return apellidos;
     }
@@ -66,11 +66,11 @@ public class Candidato implements Serializable {
     }
 
     public String getExpectativasEconomicas() {
-        return expectativasEconomicas;
+        return expectativas;
     }
 
-    public void setExpectativasEconomicas(String expectativasEconomicas) {
-        this.expectativasEconomicas = expectativasEconomicas;
+    public void setExpectativasEconomicas(String expectativas) {
+        this.expectativas = expectativas;
     }
 
     public String getDireccion() {
