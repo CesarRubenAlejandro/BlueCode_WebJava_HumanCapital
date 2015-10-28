@@ -21,10 +21,11 @@ public class Candidato implements Serializable {
     String telefono;
     String titulo;
     String email;
+    String estado;
     ArrayList<String> certificados;
     ArrayList<String> trabajosAnteriores;
 
-    public Candidato(int id, String nombreDePila, String apellidos, String expectativasEconomicas, String direccion, String telefono, String titulo, String email, ArrayList<String> certificados, ArrayList<String> trabajosAnteriores) {
+    public Candidato(int id, String nombreDePila, String apellidos, String expectativasEconomicas, String direccion, String telefono, String titulo, String email, String estado, ArrayList<String> certificados, ArrayList<String> trabajosAnteriores) {
         this.id = id;
         this.nombreDePila = nombreDePila;
         this.apellidos = apellidos;
@@ -33,8 +34,17 @@ public class Candidato implements Serializable {
         this.telefono = telefono;
         this.titulo = titulo;
         this.email = email;
+        this.estado = estado;
         this.certificados = certificados;
         this.trabajosAnteriores = trabajosAnteriores;
+    }
+    
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
     }
 
     public ArrayList<String> getCertificados() {
