@@ -32,7 +32,8 @@ public class Candidato implements Serializable {
     private ArrayList<String> trabajosAnteriores;
     
     public Candidato() {
-        
+        certificados = new ArrayList<>();
+        trabajosAnteriores = new ArrayList<>();
     }
     
     public ArrayList<String> getCertificados() {
@@ -51,7 +52,7 @@ public class Candidato implements Serializable {
         this.trabajosAnteriores = trabajosAnteriores;
     }
 
-    public Candidato(int id, String nombres, String apellidos, String expectativas, String direccion, String telefono, String titulo, String universidad, String email, int estado) {
+    public Candidato(int id, String nombres, String apellidos, String expectativas, String direccion, String telefono, String titulo, String universidad, String email, int estado, ArrayList<String> certificados, ArrayList<String> trabajosAnteriores) {
         this.id = id;
         this.nombres = nombres;
         this.apellidos = apellidos;
@@ -62,9 +63,11 @@ public class Candidato implements Serializable {
         this.universidad = universidad;
         this.email = email;
         this.estado = estado;
+        this.certificados = certificados;
+        this.trabajosAnteriores = trabajosAnteriores;
     }
-    
-    public Candidato(String nombres, String apellidos, String expectativas, String direccion, String telefono, String titulo, String universidad, String email, int estado) {
+
+    public Candidato(String nombres, String apellidos, String expectativas, String direccion, String telefono, String titulo, String universidad, String email, int estado, ArrayList<String> certificados, ArrayList<String> trabajosAnteriores) {
         this.nombres = nombres;
         this.apellidos = apellidos;
         this.expectativas = expectativas;
@@ -74,7 +77,11 @@ public class Candidato implements Serializable {
         this.universidad = universidad;
         this.email = email;
         this.estado = estado;
+        this.certificados = certificados;
+        this.trabajosAnteriores = trabajosAnteriores;
     }
+
+    
 
     public int getId() {
         return id;

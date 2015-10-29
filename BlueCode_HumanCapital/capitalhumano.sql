@@ -32,7 +32,6 @@ CREATE TABLE TrabajosAnteriores
 (
     candidatoID int NOT NULL,
     nombre varchar(255),
-    descripcion varchar(255),
     PRIMARY KEY(candidatoID, nombre),
     FOREIGN KEY(candidatoID) REFERENCES Candidatos(ID)
 );
