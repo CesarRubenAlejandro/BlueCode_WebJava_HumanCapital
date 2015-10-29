@@ -25,11 +25,10 @@
                 <th> Eliminar </th>
             </thead>
             <tbody>
-                <% ArrayList<Candidato> candidatos = (ArrayList) request.getAttribute("candidatos"); %>
-                <%! Candidato c; %>
-                <% for (int i = 0; i < candidatos.size(); i++) {
+                <% ArrayList<Candidato> candidatos = (ArrayList) request.getAttribute("candidatos");
+                   for (int i = 0; i < candidatos.size(); i++) { %>
                 <tr>
-                    <% c = candidatos.get(i); %>
+                    <% Candidato c = candidatos.get(i); %>
                     <td><%= c.getNombres() + " " + c.getApellidos() %></td>
                     <td><%= c.getEmail() %></td>
                     <td><%= c.getEstado() %></td>
