@@ -5,10 +5,9 @@
  */
 package business;
 
-import database.DatabaseConnector;
 import entidades.Candidato;
-import java.io.IOException; 
-import java.util.ArrayList;
+import java.io.IOException;
+import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -20,7 +19,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Lalo
  */
-public class CandidatosIndexServlet extends HttpServlet {
+public class CandidatosDetallesServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -34,12 +33,18 @@ public class CandidatosIndexServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        DatabaseConnector dc = new DatabaseConnector();
-        String url = "/index_candidatos.jsp";
+        int id = Integer.parseInt(request.getParameter("id"));
         
-        ArrayList<Candidato> candidatos = dc.listaCandidatos(c->true);
-        request.setAttribute("candidatos", candidatos);
+        //Definir la url del jsp de detalles
+        String url = "/candidato_detalles.jsp";
         
+        //Generar candidato con el id que se le pasa
+        //Candidato candidato = new Candidato(id);
+        
+        //Mandar el candidato como atributo al jsp
+        //request.setAttribute("candidato", candidato);
+        
+        //Cargar el jsp
         ServletContext sc = this.getServletContext();
         RequestDispatcher rd = sc.getRequestDispatcher(url);
         rd.forward(request, response);

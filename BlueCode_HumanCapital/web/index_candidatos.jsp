@@ -32,8 +32,8 @@
                     <td><%= c.getNombres() + " " + c.getApellidos() %></td>
                     <td><%= c.getEmail() %></td>
                     <td><%= c.getEstado() %></td>
-                    <td></td>
-                    <td></td>
+                    <td><a href="CandidatosDetallesServlet?id=<%= c.getId() %>"></a></td>
+                    <td><a href="CandidatosEliminarServlet?id=<%= c.getId() %>"></a></td>
                 </tr>
                 <% } %>
             </tbody>
