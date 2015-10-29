@@ -12,6 +12,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -31,6 +32,37 @@ public class DatabaseConnector {
             Logger.getLogger(DatabaseConnector.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
+    public static ArrayList<Candidato> listaCandidatos(CondicionCandidato expresion) {
+        ArrayList<Candidato> candidatos = new ArrayList<>();
+        try {
+            Statement stmtCandidatos = con.createStatement();
+            ResultSet rsCandidatos = stmtCandidatos.executeQuery("SELECT * FROM Candidatos");
+            while (rsCandidatos.next()) {
+                Candidato candidato = new Candidato();
+                candidato.setId(rsCandidatos.getInt(1));
+                candidato.setNombres(rsCandidatos.getString(2));
+                candidato.setApellidos(rsCandidatos.getString(3));
+                candidato.setTitulo(rsCandidatos.getString(4));
+                candidato.setUniversidad(rsCandidatos.getString(5));
+                candidato.setEmail(rsCandidatos.getString(6));
+                candidato.setTelefono(rsCandidatos.getString(7));
+                candidato.setDireccion(rsCandidatos.getString(8));
+                candidato.setExpectativas(rsCandidatos.getString(9));
+                candidato.setEstado(rsCandidatos.getInt(10));
+                Statement stmtCertificados = con.createStatement();
+                ResultSet rsCertificados = stmtCertificados.executeQuery("SELECT * FROM Candidatos WHERE ID = " + candidato.getId());
+                while (rsCertificados.next()) {
+                    
+                }
+            }
+            
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(DatabaseConnector.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return candidatos;
+    }  
     
     public static void insertarCandidato(Candidato candidato) {
         try {
