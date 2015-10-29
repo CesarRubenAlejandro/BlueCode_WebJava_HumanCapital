@@ -40,7 +40,7 @@ public class DatabaseConnector {
        return listaCandidatos(c -> c.getId() == id).get(0);
     }
     
-    public void eliminarCandidato(int id) {
+    public static void eliminarCandidato(int id) {
         try {
             Statement stmt = con.createStatement();
             stmt.executeUpdate("DELETE FROM Candidatos WHERE ID = 0" + id);
