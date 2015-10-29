@@ -50,10 +50,19 @@ public class DatabaseConnector {
                 candidato.setDireccion(rsCandidatos.getString(8));
                 candidato.setExpectativas(rsCandidatos.getString(9));
                 candidato.setEstado(rsCandidatos.getInt(10));
+                
+                // Certificados
                 Statement stmtCertificados = con.createStatement();
                 ResultSet rsCertificados = stmtCertificados.executeQuery("SELECT * FROM Candidatos WHERE ID = " + candidato.getId());
                 while (rsCertificados.next()) {
-                    
+                    candidato.getCertificados().add(rsCertificados.getString(1));
+                }
+                
+                // Trabajos Anteriores
+                Statement stmtTrabajosAnteriores = con.createStatement();
+                ResultSet rsTrabajosAnteriores = stmtTrabajosAnteriores.executeQuery("SELECT * FROM Candidatos WHERE ID = " + candidato.getId());
+                while (rsTrabajosAnteriores.next()) {
+                    candidato.getTrabajosAnteriores().add(rsTrabajosAnteriores.getString(1));
                 }
             }
             

@@ -24,12 +24,17 @@ public class Candidato implements Serializable {
     private String expectativas;
     private String direccion;
     private String telefono;
+    private String titulo;
+    private String universidad;
     private String email;
     private int estado;
-    private Titulo titulo;
     private ArrayList<String> certificados;
     private ArrayList<String> trabajosAnteriores;
-
+    
+    public Candidato() {
+        
+    }
+    
     public ArrayList<String> getCertificados() {
         return certificados;
     }
@@ -42,14 +47,11 @@ public class Candidato implements Serializable {
         return trabajosAnteriores;
     }
 
-    public Candidato() {
-    }
-
     public void setTrabajosAnteriores(ArrayList<String> trabajosAnteriores) {
         this.trabajosAnteriores = trabajosAnteriores;
     }
 
-    public Candidato(int id, String nombres, String apellidos, String expectativas, String direccion, String telefono, Titulo titulo, String universidad, String email, int estado) {
+    public Candidato(int id, String nombres, String apellidos, String expectativas, String direccion, String telefono, String titulo, String universidad, String email, int estado) {
         this.id = id;
         this.nombres = nombres;
         this.apellidos = apellidos;
@@ -57,17 +59,19 @@ public class Candidato implements Serializable {
         this.direccion = direccion;
         this.telefono = telefono;
         this.titulo = titulo;
+        this.universidad = universidad;
         this.email = email;
         this.estado = estado;
     }
     
-    public Candidato(String nombres, String apellidos, String expectativas, String direccion, String telefono, Titulo titulo, String universidad, String email, int estado) {
+    public Candidato(String nombres, String apellidos, String expectativas, String direccion, String telefono, String titulo, String universidad, String email, int estado) {
         this.nombres = nombres;
         this.apellidos = apellidos;
         this.expectativas = expectativas;
         this.direccion = direccion;
         this.telefono = telefono;
         this.titulo = titulo;
+        this.universidad = universidad;
         this.email = email;
         this.estado = estado;
     }
@@ -120,14 +124,22 @@ public class Candidato implements Serializable {
         this.telefono = telefono;
     }
 
-    public Titulo getTitulo() {
+    public String getTitulo() {
         return titulo;
     }
 
-    public void setTitulo(Titulo titulo) {
+    public void setTitulo(String titulo) {
         this.titulo = titulo;
     }
-    
+
+    public String getUniversidad() {
+        return universidad;
+    }
+
+    public void setUniversidad(String universidad) {
+        this.universidad = universidad;
+    }
+
     public String getEmail() {
         return email;
     }
