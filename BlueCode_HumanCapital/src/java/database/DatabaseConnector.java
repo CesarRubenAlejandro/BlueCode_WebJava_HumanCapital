@@ -35,6 +35,20 @@ public class DatabaseConnector {
         
     }
     
+    public Candidato getCandidato(int id) {
+       return listaCandidatos(c -> c.getId() == id).get(0);
+    }
+    
+    public void eliminarCandidato(int id) {
+        try {
+            Statement stmt = con.createStatement();
+            stmt.executeUpdate("DELETE FROM Candidatos WHERE ID = 0" + id);
+        } catch (SQLException ex) {
+            Logger.getLogger(DatabaseConnector.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    
     public static ArrayList<Candidato> listaCandidatos(CondicionCandidato expresion) {
         ArrayList<Candidato> candidatos = new ArrayList<>();
         try {
