@@ -25,17 +25,18 @@ public class DatabaseConnector {
     private static Connection con;
     
     public DatabaseConnector() {
-        String url ="jdbc:mysql://localhost/capital_humano";
-        System.out.println("Creando conexion");
         try {
+            Class.forName("com.mysql.jdbc.Driver");
+            String url ="jdbc:mysql://localhost/capital_humano";
             con = DriverManager.getConnection(url, "root", "");
         } catch (SQLException ex) {
             Logger.getLogger(DatabaseConnector.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(DatabaseConnector.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
     }
     
-    public Candidato getCandidato(int id) {
+    public static Candidato getCandidato(int id) {
        return listaCandidatos(c -> c.getId() == id).get(0);
     }
     

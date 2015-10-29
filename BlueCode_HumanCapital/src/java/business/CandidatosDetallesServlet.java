@@ -6,6 +6,7 @@
 package business;
 
 import entidades.Candidato;
+import database.*;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
@@ -36,13 +37,13 @@ public class CandidatosDetallesServlet extends HttpServlet {
         int id = Integer.parseInt(request.getParameter("id"));
         
         //Definir la url del jsp de detalles
-        String url = "/candidato_detalles.jsp";
+        String url = "/detalles_candidato.jsp";
         
-        //Generar candidato con el id que se le pasa
-        //Candidato candidato = new Candidato(id);
+        //Generar candidato  con el id que se le pasa
+        Candidato candidato = DatabaseConnector.getCandidato(id);
         
         //Mandar el candidato como atributo al jsp
-        //request.setAttribute("candidato", candidato);
+        request.setAttribute("candidato", candidato);
         
         //Cargar el jsp
         ServletContext sc = this.getServletContext();
