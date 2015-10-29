@@ -89,14 +89,12 @@ INSERT INTO Certificados VALUES (1, 'Certificado en Salsa Roja 2013-2014');
 
 INSERT INTO TrabajosAnteriores VALUES (
   1, 
-  'Ingeniero en Software',
-  'Desarrollo de sistema de pizzeria'
+  'Ingeniero en Software'
 );
 
 INSERT INTO TrabajosAnteriores VALUES (
   4, 
-  'Ingeniero en Software',
-  'Desarrollo de sistema de redes'
+  'Ingeniero en Software'
 );
 ################################################################################
 

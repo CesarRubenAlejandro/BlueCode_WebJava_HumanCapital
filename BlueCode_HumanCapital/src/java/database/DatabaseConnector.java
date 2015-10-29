@@ -26,11 +26,13 @@ public class DatabaseConnector {
     
     public DatabaseConnector() {
         String url ="jdbc:mysql://localhost/capital_humano";
+        System.out.println("Creando conexion");
         try {
             con = DriverManager.getConnection(url, "root", "");
         } catch (SQLException ex) {
             Logger.getLogger(DatabaseConnector.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
     }
     
     public static ArrayList<Candidato> listaCandidatos(CondicionCandidato expresion) {

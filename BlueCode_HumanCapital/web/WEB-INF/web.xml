@@ -4,9 +4,17 @@
         <servlet-name>CandidatosServlet</servlet-name>
         <servlet-class>business.CandidatosServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>CandidatosIndexServlet</servlet-name>
+        <servlet-class>business.CandidatosIndexServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>CandidatosServlet</servlet-name>
         <url-pattern>/CandidatosServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CandidatosIndexServlet</servlet-name>
+        <url-pattern>/CandidatosIndexServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
