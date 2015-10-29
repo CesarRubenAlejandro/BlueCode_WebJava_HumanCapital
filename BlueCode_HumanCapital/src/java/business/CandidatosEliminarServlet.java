@@ -7,8 +7,8 @@ package business;
 
 import database.DatabaseConnector;
 import entidades.Candidato;
-import java.io.IOException; 
-import java.util.ArrayList;
+import java.io.IOException;
+import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -20,7 +20,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Lalo
  */
-public class CandidatosIndexServlet extends HttpServlet {
+public class CandidatosEliminarServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -34,13 +34,12 @@ public class CandidatosIndexServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        String url = "/index_candidatos.jsp";
+        int id = Integer.parseInt(request.getParameter("id"));
         
-        ArrayList<Candidato> candidatos = DatabaseConnector.listaCandidatos(c->c.getEstado() == Candidato.PENDIENTE || c.getEstado() == Candidato.RECHAZADO);
-        request.setAttribute("candidatos", candidatos);
-        
+        String url = "/index_candidato.jsp";
+        DatabaseConnector.eliminarCandidato(id);
         ServletContext sc = this.getServletContext();
-        RequestDispatcher rd = sc.getRequestDispatcher(url);
+        RequestDispatcher rd = sc.getRequestDispatcher("/CandidatosIndexServlet");
         rd.forward(request, response);
     }
 

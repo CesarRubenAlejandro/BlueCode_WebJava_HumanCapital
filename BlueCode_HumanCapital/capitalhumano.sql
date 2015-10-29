@@ -25,7 +25,7 @@ CREATE TABLE Certificados
     candidatoID int NOT NULL,
     certificado varchar(255),
     PRIMARY KEY(candidatoID, certificado),
-    FOREIGN KEY(candidatoID) REFERENCES Candidatos(ID)
+    FOREIGN KEY(candidatoID) REFERENCES Candidatos(ID) ON DELETE CASCADE
 );
 
 CREATE TABLE TrabajosAnteriores
@@ -33,7 +33,7 @@ CREATE TABLE TrabajosAnteriores
     candidatoID int NOT NULL,
     nombre varchar(255),
     PRIMARY KEY(candidatoID, nombre),
-    FOREIGN KEY(candidatoID) REFERENCES Candidatos(ID)
+    FOREIGN KEY(candidatoID) REFERENCES Candidatos(ID) ON DELETE CASCADE
 );
 
 CREATE TABLE Empleados
@@ -44,7 +44,7 @@ CREATE TABLE Empleados
     diasDeVacaciones int,
     PRIMARY KEY(ID),
     UNIQUE(ID),
-    FOREIGN KEY(ID) references Candidatos(ID)
+    FOREIGN KEY(ID) references Candidatos(ID) ON DELETE CASCADE
 );
 
 CREATE TABLE Entrevistadores
@@ -52,7 +52,7 @@ CREATE TABLE Entrevistadores
     ID int NOT NULL,
     PRIMARY KEY(ID),
     UNIQUE(ID),
-    FOREIGN KEY(ID) references Empleados(ID)
+    FOREIGN KEY(ID) references Empleados(ID) ON DELETE CASCADE
 );
 
 CREATE TABLE Administradores
@@ -62,7 +62,7 @@ CREATE TABLE Administradores
     password varchar(255),
     PRIMARY KEY(ID),
     UNIQUE(ID, username),
-    FOREIGN KEY(ID) references Empleados(ID)
+    FOREIGN KEY(ID) references Empleados(ID) ON DELETE CASCADE
 );
 
 CREATE TABLE Entrevistas
@@ -73,6 +73,6 @@ CREATE TABLE Entrevistas
     plataforma varchar(255) NOT NULL,
     feedback varchar(1023),
     PRIMARY KEY(candidatoID, entrevistadorID, fecha),
-    FOREIGN KEY(candidatoID) references Candidatos(ID),
-    FOREIGN KEY(entrevistadorID) references Entrevistadores(ID)
+    FOREIGN KEY(candidatoID) references Candidatos(ID) ON DELETE CASCADE,
+    FOREIGN KEY(entrevistadorID) references Entrevistadores(ID) ON DELETE CASCADE
 );

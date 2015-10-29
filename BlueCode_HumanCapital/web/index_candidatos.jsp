@@ -33,7 +33,7 @@
                     <td><%= c.getEmail() %></td>
                     <td><%= c.getEstado() %></td>
                     <td><a href="CandidatosDetallesServlet?id=<%= c.getId() %>">Detalles</a></td>
-                    <td><a href="CandidatosEliminarServlet?id=<%= c.getId() %>"></a>Eliminar</td>
+                    <td><a href="CandidatosEliminarServlet?id=<%= c.getId() %>">Eliminar</a></td>
                 </tr>
                 <% } %>
             </tbody>

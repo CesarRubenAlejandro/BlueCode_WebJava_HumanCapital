@@ -12,6 +12,10 @@
         <servlet-name>CandidatosDetallesServlet</servlet-name>
         <servlet-class>business.CandidatosDetallesServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>CandidatosEliminarServlet</servlet-name>
+        <servlet-class>business.CandidatosEliminarServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>CandidatosServlet</servlet-name>
         <url-pattern>/CandidatosServlet</url-pattern>
@@ -23,6 +27,10 @@
     <servlet-mapping>
         <servlet-name>CandidatosDetallesServlet</servlet-name>
         <url-pattern>/CandidatosDetallesServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CandidatosEliminarServlet</servlet-name>
+        <url-pattern>/CandidatosEliminarServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
