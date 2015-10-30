@@ -33,8 +33,8 @@ public class CandidatosEliminarServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-        int id = Integer.parseInt(request.getParameter("id"));
+        String idString = request.getParameter("id");
+        int id = Integer.parseInt(idString);
         
         String url = "/index_candidato.jsp";
         DatabaseConnector.eliminarCandidato(id);

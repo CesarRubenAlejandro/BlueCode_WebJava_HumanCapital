@@ -9,12 +9,12 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>HumanCapital home</title>
     </head>
     <body>
         <jsp:useBean id = "datos" scope= "session"
         class = "database.DatabaseConnector" />
-        <h1>Hello World!</h1>
+        <h1>Bienvenido</h1>
         <a href="CandidatosIndexServlet">Candidatos</a>
     </body>
 </html>

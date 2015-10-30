@@ -142,9 +142,6 @@
             <button type="button" id="EditarBtn" onclick="hacerEditable()">Editar</button>
             <input type="submit" id="GuardarBtn" value="Guardar cambios" disabled>
         </form>
-        <form action="CandidatosEliminarServlet?id=<%= candidato.getId()%>">        
-            <input type="submit" id="EliminarBtn" value="Eliminar candidato">
-        </form>
 
         <script>
             var index = "<%=candidato.getEstado()%>";

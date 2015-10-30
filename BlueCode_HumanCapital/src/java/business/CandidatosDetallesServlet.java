@@ -38,8 +38,6 @@ public class CandidatosDetallesServlet extends HttpServlet {
             int idCand = Integer.parseInt(id);
             Candidato candidato = DatabaseConnector.getCandidato(idCand);
             
-            System.out.println("TRABAJOS: " + candidato.getTrabajosAnteriores().get(0));
-            
             request.setAttribute("candidato", candidato);
             String url = "/detalles_candidato.jsp";
             ServletContext sc = this.getServletContext();
@@ -47,6 +45,7 @@ public class CandidatosDetallesServlet extends HttpServlet {
             rd.forward(request, response);
         } else {
             int idCandidato = Integer.parseInt(request.getParameter("idCandidato"));
+            System.out.println("ID: " + idCandidato);
             String nombres = request.getParameter("nombres");
             String apellidos = request.getParameter("apellidos");
             String expectativas = request.getParameter("expectativas");
