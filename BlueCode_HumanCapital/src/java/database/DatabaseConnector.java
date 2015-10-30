@@ -43,7 +43,7 @@ public class DatabaseConnector {
     public static void eliminarCandidato(int id) {
         try {
             Statement stmt = con.createStatement();
-            stmt.executeUpdate("DELETE FROM Candidatos WHERE ID = 0" + id);
+            stmt.executeUpdate("DELETE FROM Candidatos WHERE ID = " + id);
         } catch (SQLException ex) {
             Logger.getLogger(DatabaseConnector.class.getName()).log(Level.SEVERE, null, ex);
         }
