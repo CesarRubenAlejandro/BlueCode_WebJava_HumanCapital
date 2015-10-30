@@ -34,6 +34,7 @@
     <body>
         <h1>Detalles de <%=candidato.getNombres()%> <%= candidato.getApellidos()%></h1>
         <form action="CandidatosDetallesServlet">
+            <input type="hidden" name="idCandidato" value="<%=candidato.getId()%>">
             <table>
                 <tr>
                     <td>Estado</td>

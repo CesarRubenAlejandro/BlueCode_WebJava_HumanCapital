@@ -35,7 +35,6 @@ public class CandidatosDetallesServlet extends HttpServlet {
             throws ServletException, IOException {
         String id = request.getParameter("id");
         if (id != null) {
-            System.out.println("id no es null");
             int idCand = Integer.parseInt(id);
             Candidato candidato = DatabaseConnector.getCandidato(idCand);
             request.setAttribute("candidato", candidato);
@@ -44,7 +43,7 @@ public class CandidatosDetallesServlet extends HttpServlet {
             RequestDispatcher rd = sc.getRequestDispatcher(url);
             rd.forward(request, response);
         } else {
-            System.out.println("id es null");
+            int idCandidato = Integer.parseInt(request.getParameter("idCandidato"));
             String nombres = request.getParameter("nombres");
             String apellidos = request.getParameter("apellidos");
             String expectativas = request.getParameter("expectativas");

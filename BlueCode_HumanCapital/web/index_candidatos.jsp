@@ -15,7 +15,7 @@
     </head>
     <body>
         <h1>Candidatos</h1>
-        
+        <a href="crear_candidato.jsp">Nuevo candidato</a>
         <table>
             <thead>
                 <th> Nombre </th>
