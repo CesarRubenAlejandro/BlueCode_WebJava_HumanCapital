@@ -74,7 +74,7 @@ public class CandidatosDetallesServlet extends HttpServlet {
                 cert.add(trabajos[i]);
             }
 
-            Candidato candidato = new Candidato(nombres, apellidos, expectativas, direccion, telefono, titulo, universidad, email, estado, cert, trab);
+            Candidato candidato = new Candidato(idCandidato,nombres, apellidos, expectativas, direccion, telefono, titulo, universidad, email, estado, cert, trab);
             DatabaseConnector.modificarCandidato(candidato);
 
             String url = "/index_candidatos.jsp";
