@@ -57,15 +57,29 @@
                         </select> 
                     </td>
                 </tr>
+            </table>
+
+            <table id="certificadosTabla">
                 <tr>
                     <td>Certificados</td>
-                    <td><input type="text" name="certificados"></td>
                 </tr>
-                <tr id="trabajosRow">
+                <tr>
+                    <td>
+                        <input type="text" name="certificados">
+                        <button type="button" onclick="borraCertificado(this)">borrar</button>
+                        <button type="button" onclick="agregaCertificado()">otro</button>
+                    </td>
+                </tr>
+            </table>
+
+            <table id="trabajosTabla">
+                <tr>
                     <td>Trabajos anteriores</td>
+                </tr>
+                <tr>
                     <td>
                         <input type="text" name="trabajos"> 
-                        <button>borrar</button>
+                        <button type="button" onclick="borraTrabajo(this)">borrar</button>
                         <button type="button" onclick="agregaTrabajo()">otro</button>
                     </td>
                 </tr>
@@ -74,33 +88,73 @@
         </form>
         <script>
             function agregaTrabajo() {
-                var nodo = document.createElement("td");
-                var linebreak = document.createElement("br");
-                
+                var renglon = document.createElement("tr");
+                var columna = document.createElement("td");
+
                 var inputNodo = document.createElement("input");
                 inputNodo.type = "text";
-                inputNodo.name="trabajos";
-                
-                var btnBorrar = document.createElement("BUTTON");
-                btnBorrar.onclick=borraTrabajo;
-                btnBorrar.innerHTML="borrar";
-                btnBorrar.type="button";
-                
-                var btnAgregar = document.createElement("BUTTON");
-                btnAgregar.onclick=agregaTrabajo;
-                btnAgregar.innerHTML="otro";
-                btnAgregar.type="button";
-                
-                nodo.appendChild(inputNodo);
-                nodo.appendChild(btnBorrar);
-                nodo.appendChild(btnAgregar);
-                
-                document.getElementById("trabajosRow").appendChild(linebreak);
-                document.getElementById("trabajosRow").appendChild(nodo);
+                inputNodo.name = "trabajos";
+
+                var btnBorrar = document.createElement("button");
+                btnBorrar.onclick = function () {
+                    borraTrabajo(this);
+                };
+                btnBorrar.innerHTML = "borrar";
+                btnBorrar.type = "button";
+
+                var btnAgregar = document.createElement("button");
+                btnAgregar.onclick = agregaTrabajo;
+                btnAgregar.innerHTML = "otro";
+                btnAgregar.type = "button";
+
+                columna.appendChild(inputNodo);
+                columna.appendChild(btnBorrar);
+                columna.appendChild(btnAgregar);
+
+                renglon.appendChild(columna);
+                document.getElementById("trabajosTabla").appendChild(renglon);
             }
 
-            function borraTrabajo() {
+            function borraTrabajo(t) {
+                var renglon = t.parentNode.parentNode;
+                if (renglon.rowIndex > 1){
+                    document.getElementById("trabajosTabla").deleteRow(renglon.rowIndex);
+                }
+            }
 
+            function agregaCertificado() {
+                var renglon = document.createElement("tr");
+                var columna = document.createElement("td");
+
+                var inputNodo = document.createElement("input");
+                inputNodo.type = "text";
+                inputNodo.name = "certificados";
+
+                var btnBorrar = document.createElement("button");
+                btnBorrar.onclick = btnBorrar.onclick = function () {
+                    borraCertificado(this);
+                };
+                btnBorrar.innerHTML = "borrar";
+                btnBorrar.type = "button";
+
+                var btnAgregar = document.createElement("button");
+                btnAgregar.onclick = agregaCertificado;
+                btnAgregar.innerHTML = "otro";
+                btnAgregar.type = "button";
+
+                columna.appendChild(inputNodo);
+                columna.appendChild(btnBorrar);
+                columna.appendChild(btnAgregar);
+
+                renglon.appendChild(columna);
+                document.getElementById("certificadosTabla").appendChild(renglon);
+            }
+
+            function borraCertificado(t) {
+                var renglon = t.parentNode.parentNode;
+                if (renglon.rowIndex > 1){
+                    document.getElementById("certificadosTabla").deleteRow(renglon.rowIndex);
+                }
             }
         </script>
     </body>

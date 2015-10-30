@@ -5,10 +5,10 @@
  */
 package business;
 
+import database.DatabaseConnector;
 import entidades.Candidato;
-import database.*;
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.util.ArrayList;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -18,7 +18,7 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author Lalo
+ * @author Angela Romo
  */
 public class CandidatosDetallesServlet extends HttpServlet {
 
@@ -33,22 +33,58 @@ public class CandidatosDetallesServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-        int id = Integer.parseInt(request.getParameter("id"));
-        
-        //Definir la url del jsp de detalles
-        String url = "/detalles_candidato.jsp";
-        
-        //Generar candidato  con el id que se le pasa
-        Candidato candidato = DatabaseConnector.getCandidato(id);
-        
-        //Mandar el candidato como atributo al jsp
-        request.setAttribute("candidato", candidato);
-        
-        //Cargar el jsp
-        ServletContext sc = this.getServletContext();
-        RequestDispatcher rd = sc.getRequestDispatcher(url);
-        rd.forward(request, response);
+        String id = request.getParameter("id");
+        if (id != null) {
+            System.out.println("id no es null");
+            int idCand = Integer.parseInt(id);
+            Candidato candidato = DatabaseConnector.getCandidato(idCand);
+            request.setAttribute("candidato", candidato);
+            String url = "/detalles_candidato.jsp";
+            ServletContext sc = this.getServletContext();
+            RequestDispatcher rd = sc.getRequestDispatcher(url);
+            rd.forward(request, response);
+        } else {
+            System.out.println("id es null");
+            String nombres = request.getParameter("nombres");
+            String apellidos = request.getParameter("apellidos");
+            String expectativas = request.getParameter("expectativas");
+            String direccion = request.getParameter("direccion");
+            String telefono = request.getParameter("telefono");
+            String titulo = request.getParameter("titulo");
+            String universidad = request.getParameter("universidad");
+            String email = request.getParameter("email");
+
+            String estadoString = request.getParameter("estado");
+            int estado = 0;
+            if (estadoString.equals(Candidato.ACEPTADO)) {
+                estado = 1;
+            } else if (estadoString.equals(Candidato.RECHAZADO)) {
+                estado = 2;
+            } else if (estadoString.equals(Candidato.PENDIENTE)) {
+                estado = 0;
+            }
+            String[] certificados = request.getParameterValues("certificados");
+            ArrayList<String> cert = new ArrayList<String>();
+            for (int i = 0; i < certificados.length; i++) {
+                cert.add(certificados[i]);
+            }
+
+            String[] trabajos = request.getParameterValues("trabajos");
+            ArrayList<String> trab = new ArrayList<String>();
+            for (int i = 0; i < trabajos.length; i++) {
+                cert.add(trabajos[i]);
+            }
+
+            Candidato candidato = new Candidato(nombres, apellidos, expectativas, direccion, telefono, titulo, universidad, email, estado, cert, trab);
+            DatabaseConnector.modificarCandidato(candidato);
+
+            String url = "/index_candidatos.jsp";
+            ArrayList<Candidato> candidatos = DatabaseConnector.listaCandidatos(c -> c.getEstado() == Candidato.PENDIENTE || c.getEstado() == Candidato.RECHAZADO);
+            request.setAttribute("candidatos", candidatos);
+            ServletContext sc = this.getServletContext();
+            RequestDispatcher rd = sc.getRequestDispatcher(url);
+            rd.forward(request, response);
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

@@ -8,7 +8,7 @@ package business;
 import entidades.Candidato;
 import database.DatabaseConnector;
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.util.ArrayList;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -33,18 +33,51 @@ public class CrearCandidatoServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
         String url = "/index_candidatos.jsp";
-        
-        Candidato candidato = (Candidato)(request.getAttribute("candidato"));
+
+        String nombres = request.getParameter("nombres");
+        String apellidos = request.getParameter("apellidos");
+        String expectativas = request.getParameter("expectativas");
+        String direccion = request.getParameter("direccion");
+        String telefono = request.getParameter("telefono");
+        String titulo = request.getParameter("titulo");
+        String universidad = request.getParameter("universidad");
+        String email = request.getParameter("email");
+
+        String estadoString = request.getParameter("estado");
+        int estado = 0;
+        if (estadoString.equals("aceptado")) {
+            estado = Candidato.ACEPTADO;
+        } else if (estadoString.equals("rechazado")) {
+            estado = Candidato.RECHAZADO;
+        } else if (estadoString.equals("pendiente")) {
+            estado = Candidato.PENDIENTE;
+        }
+        String[] certificados = request.getParameterValues("certificados");
+        ArrayList<String> cert = new ArrayList<String>();
+        for (int i = 0; i < certificados.length; i++) {
+            cert.add(certificados[i]);
+        }
+
+        String[] trabajos = request.getParameterValues("trabajos");
+        ArrayList<String> trab = new ArrayList<String>();
+        for (int i = 0; i < trabajos.length; i++) {
+            cert.add(trabajos[i]);
+        }
+
+        Candidato candidato = new Candidato(nombres, apellidos, expectativas, direccion, telefono, titulo, universidad, email, estado, cert, trab);
         DatabaseConnector.insertarCandidato(candidato);
-        
+      
+        ArrayList<Candidato> candidatos = DatabaseConnector.listaCandidatos(c->c.getEstado() == Candidato.PENDIENTE || c.getEstado() == Candidato.RECHAZADO);
+        request.setAttribute("candidatos", candidatos);
         ServletContext sc = this.getServletContext();
         RequestDispatcher rd = sc.getRequestDispatcher(url);
         rd.forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+
     /**
      * Handles the HTTP <code>GET</code> method.
      *
