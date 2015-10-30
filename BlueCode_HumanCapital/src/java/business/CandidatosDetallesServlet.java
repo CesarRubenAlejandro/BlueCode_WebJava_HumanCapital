@@ -37,6 +37,9 @@ public class CandidatosDetallesServlet extends HttpServlet {
         if (id != null) {
             int idCand = Integer.parseInt(id);
             Candidato candidato = DatabaseConnector.getCandidato(idCand);
+            
+            System.out.println("TRABAJOS: " + candidato.getTrabajosAnteriores().get(0));
+            
             request.setAttribute("candidato", candidato);
             String url = "/detalles_candidato.jsp";
             ServletContext sc = this.getServletContext();

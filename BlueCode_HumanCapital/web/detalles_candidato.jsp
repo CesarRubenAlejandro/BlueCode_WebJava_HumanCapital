@@ -88,7 +88,7 @@
                 %> 
                 <tr>
                     <td>
-                        <input class="inputFields" type="text" name="certificados" value="" readOnly> 
+                        <input class="inputFields" type="text" name="certificados" readOnly> 
                         <button class="borrarTrabajoBtn" type="button" onclick="borraCertificado(this)" disabled>borrar</button>
                         <button class="nuevoTrabajoBtn" type="button" onclick="agregaCertificado()" disabled>otro</button>
                     </td>
@@ -118,7 +118,7 @@
                 %> 
                 <tr>
                     <td>
-                        <input class="inputFields" type="text" name="trabajos" value="" readOnly> 
+                        <input class="inputFields" type="text" name="trabajos" readOnly> 
                         <button class="borrarTrabajoBtn" type="button" onclick="borraTrabajo(this)" disabled>borrar</button>
                         <button class="nuevoTrabajoBtn" type="button" onclick="agregaTrabajo()" disabled>otro</button>
                     </td>

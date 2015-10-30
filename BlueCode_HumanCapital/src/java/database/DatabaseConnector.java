@@ -69,7 +69,7 @@ public class DatabaseConnector {
             for (String certificado : candidato.getCertificados()) {
                 Statement updateCertificadoStatement = con.createStatement();
                 updateCertificadoStatement.executeUpdate("UPDATE Certificados "
-                        + "SET nombre = " + certificado + " "
+                        + "SET certificado = " + certificado + " "
                         + "WHERE candidatoID = " + candidato.getId());
             }
             
@@ -149,7 +149,7 @@ public class DatabaseConnector {
             //inserta los certificados
             for (String certificado : candidato.getCertificados()) {
                 PreparedStatement insertCertificadoStatement = con.prepareStatement("INSERT INTO Certificados"
-                        + "(candidatoId, nombre) "
+                        + "(candidatoId, certificado) "
                         + "VALUES(?,?)");
                 insertCertificadoStatement.setInt(1, candidato.getId());
                 insertCertificadoStatement.setString(2, certificado);

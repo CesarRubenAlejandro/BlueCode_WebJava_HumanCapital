@@ -58,12 +58,14 @@ public class CrearCandidatoServlet extends HttpServlet {
         ArrayList<String> cert = new ArrayList<String>();
         for (int i = 0; i < certificados.length; i++) {
             cert.add(certificados[i]);
+            System.out.println("CERTIFICADO " + certificados[i]);
         }
 
         String[] trabajos = request.getParameterValues("trabajos");
         ArrayList<String> trab = new ArrayList<String>();
         for (int i = 0; i < trabajos.length; i++) {
-            cert.add(trabajos[i]);
+            trab.add(trabajos[i]);
+            System.out.println("TRABAJO " + trabajos[i]);
         }
 
         Candidato candidato = new Candidato(nombres, apellidos, expectativas, direccion, telefono, titulo, universidad, email, estado, cert, trab);
