@@ -49,6 +49,25 @@ public class DatabaseConnector {
         }
     }
     
+    public static void modificarCandidato(Candidato candidato) {
+        try {
+            PreparedStatement stmtCandidato = con.prepareStatement("UPDATE Candidatos "
+                    + "SET nombres = ?, apellidos = ?, titulo = ?, universidad = ?, email  = ?, telefono = ?, direccion = ?, expectativas = ?, estado = ?) "
+                    + "WHERE ID = " + candidato.getId());
+            stmtCandidato.setString(1, candidato.getNombres());
+            stmtCandidato.setString(2, candidato.getApellidos());
+            stmtCandidato.setString(3, candidato.getTitulo());
+            stmtCandidato.setString(4, candidato.getUniversidad());
+            stmtCandidato.setString(5, candidato.getEmail());
+            stmtCandidato.setString(6, candidato.getTelefono());
+            stmtCandidato.setString(7, candidato.getDireccion());
+            stmtCandidato.setString(8, candidato.getExpectativas());
+            stmtCandidato.setInt(9, candidato.getEstado());
+            stmtCandidato.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(DatabaseConnector.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
     
     public static ArrayList<Candidato> listaCandidatos(CondicionCandidato expresion) {
         ArrayList<Candidato> candidatos = new ArrayList<>();
