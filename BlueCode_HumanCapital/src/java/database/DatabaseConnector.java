@@ -30,8 +30,10 @@ public class DatabaseConnector {
             String url ="jdbc:mysql://localhost/capital_humano";
             con = DriverManager.getConnection(url, "root", "");
         } catch (SQLException ex) {
+            ex.printStackTrace();
             Logger.getLogger(DatabaseConnector.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
+            ex.printStackTrace();
             Logger.getLogger(DatabaseConnector.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
@@ -45,6 +47,7 @@ public class DatabaseConnector {
             Statement stmt = con.createStatement();
             stmt.executeUpdate("DELETE FROM Candidatos WHERE ID = " + id);
         } catch (SQLException ex) {
+            ex.printStackTrace();
             Logger.getLogger(DatabaseConnector.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
@@ -81,6 +84,7 @@ public class DatabaseConnector {
                         + "WHERE candidatoID = " + candidato.getId());
             }
         } catch (SQLException ex) {
+            ex.printStackTrace();
             Logger.getLogger(DatabaseConnector.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
@@ -120,6 +124,7 @@ public class DatabaseConnector {
                 }
             }
         } catch (SQLException ex) {
+            ex.printStackTrace();
             Logger.getLogger(DatabaseConnector.class.getName()).log(Level.SEVERE, null, ex);
         }
         return candidatos;
@@ -143,7 +148,8 @@ public class DatabaseConnector {
             
             // obtiene el ID del candidato que acaba de ser insertado
             Statement lastIdStatement = con.createStatement();
-            ResultSet rs = lastIdStatement.executeQuery("SELECT LAST_INSERT_ID()");
+            ResultSet rs = lastIdStatement.executeQuery("SELECT LAST_INSERT_ID() FROM CANDIDATOS");
+            rs.next();
             candidato.setId(rs.getInt(1));
             
             //inserta los certificados
@@ -153,20 +159,21 @@ public class DatabaseConnector {
                         + "VALUES(?,?)");
                 insertCertificadoStatement.setInt(1, candidato.getId());
                 insertCertificadoStatement.setString(2, certificado);
-                insertCandidatoStatement.executeUpdate();
+                insertCertificadoStatement.executeUpdate();
             }
             
              //inserta los trabajos anteriores
             for (String trabajoAnterior : candidato.getTrabajosAnteriores()) {
-                PreparedStatement insertCertificadoStatement = con.prepareStatement("INSERT INTO TrabajosAnteriores"
+                PreparedStatement insertTrabajoAnteriorStatement = con.prepareStatement("INSERT INTO TrabajosAnteriores"
                         + "(candidatoId, nombre) "
                         + "VALUES(?,?)");
-                insertCertificadoStatement.setInt(1, candidato.getId());
-                insertCertificadoStatement.setString(2, trabajoAnterior);
-                insertCandidatoStatement.executeUpdate();
+                insertTrabajoAnteriorStatement.setInt(1, candidato.getId());
+                insertTrabajoAnteriorStatement.setString(2, trabajoAnterior);
+                insertTrabajoAnteriorStatement.executeUpdate();
             }
             
         } catch (SQLException ex) {
+            ex.printStackTrace();
             Logger.getLogger(DatabaseConnector.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
