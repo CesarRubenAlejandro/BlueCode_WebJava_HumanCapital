@@ -52,7 +52,7 @@ public class DatabaseConnector {
     public static void modificarCandidato(Candidato candidato) {
         try {
             PreparedStatement stmtCandidato = con.prepareStatement("UPDATE Candidatos "
-                    + "SET nombres = ?, apellidos = ?, titulo = ?, universidad = ?, email  = ?, telefono = ?, direccion = ?, expectativas = ?, estado = ?) "
+                    + "SET nombres = ?, apellidos = ?, titulo = ?, universidad = ?, email  = ?, telefono = ?, direccion = ?, expectativas = ?, estado = ? "
                     + "WHERE ID = " + candidato.getId());
             stmtCandidato.setString(1, candidato.getNombres());
             stmtCandidato.setString(2, candidato.getApellidos());
@@ -64,6 +64,22 @@ public class DatabaseConnector {
             stmtCandidato.setString(8, candidato.getExpectativas());
             stmtCandidato.setInt(9, candidato.getEstado());
             stmtCandidato.executeUpdate();
+            
+            //inserta los certificados
+            for (String certificado : candidato.getCertificados()) {
+                Statement updateCertificadoStatement = con.createStatement();
+                updateCertificadoStatement.executeUpdate("UPDATE Certificados "
+                        + "SET nombre = " + certificado + " "
+                        + "WHERE candidatoID = " + candidato.getId());
+            }
+            
+             //inserta los trabajos anteriores
+            for (String trabajoAnterior : candidato.getTrabajosAnteriores()) {
+                Statement updateTrabajoAnteriorStatement = con.createStatement();
+                updateTrabajoAnteriorStatement.executeUpdate("UPDATE TrabajosAnteriores "
+                        + "SET nombre = " + trabajoAnterior + " "
+                        + "WHERE candidatoID = " + candidato.getId());
+            }
         } catch (SQLException ex) {
             Logger.getLogger(DatabaseConnector.class.getName()).log(Level.SEVERE, null, ex);
         }
