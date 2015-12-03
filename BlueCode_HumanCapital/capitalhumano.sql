@@ -15,19 +15,6 @@ CREATE DATABASE IF NOT EXISTS `capital_humano` /*!40100 DEFAULT CHARACTER SET la
 USE `capital_humano`;
 
 
--- Dumping structure for table capital_humano.administradores
-CREATE TABLE IF NOT EXISTS `administradores` (
-  `ID` int(11) NOT NULL,
-  `username` varchar(255) NOT NULL,
-  `password` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`ID`),
-  UNIQUE KEY `ID` (`ID`,`username`),
-  CONSTRAINT `administradores_ibfk_1` FOREIGN KEY (`ID`) REFERENCES `empleados` (`ID`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- Data exporting was unselected.
-
-
 -- Dumping structure for table capital_humano.candidatos
 CREATE TABLE IF NOT EXISTS `candidatos` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
@@ -60,14 +47,14 @@ CREATE TABLE IF NOT EXISTS `certificados` (
 
 -- Dumping structure for table capital_humano.empleados
 CREATE TABLE IF NOT EXISTS `empleados` (
-  `ID` int(11) NOT NULL,
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
   `salario` double NOT NULL,
   `puesto` varchar(255) NOT NULL,
   `diasDeVacaciones` int(11) DEFAULT NULL,
   `esEntrevistador` bit(1) NOT NULL,
   PRIMARY KEY (`ID`),
   UNIQUE KEY `ID` (`ID`),
-  CONSTRAINT `empleados_ibfk_1` FOREIGN KEY (`ID`) REFERENCES `candidatos` (`ID`) ON DELETE CASCADE
+  CONSTRAINT `empleados_ibfk_1` FOREIGN KEY (`ID`) REFERENCES `candidatos` (`ID`) ON DELETE CASCADE ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- Data exporting was unselected.
@@ -81,9 +68,9 @@ CREATE TABLE IF NOT EXISTS `entrevistas` (
   `plataforma` varchar(255) NOT NULL,
   `feedback` varchar(1023) DEFAULT NULL,
   PRIMARY KEY (`candidatoID`,`entrevistadorID`,`fecha`),
-  KEY `entrevistadorID` (`entrevistadorID`),
+  KEY `entrevistas_ibfk_2` (`entrevistadorID`),
   CONSTRAINT `entrevistas_ibfk_1` FOREIGN KEY (`candidatoID`) REFERENCES `candidatos` (`ID`) ON DELETE CASCADE,
-  CONSTRAINT `entrevistas_ibfk_2` FOREIGN KEY (`entrevistadorID`) REFERENCES `entrevistadores` (`ID`) ON DELETE CASCADE
+  CONSTRAINT `entrevistas_ibfk_2` FOREIGN KEY (`entrevistadorID`) REFERENCES `empleados` (`ID`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- Data exporting was unselected.
@@ -106,8 +93,8 @@ CREATE TABLE IF NOT EXISTS `usuarioadmin` (
   `password` varchar(50) NOT NULL,
   `empleadoID` int(11) NOT NULL,
   PRIMARY KEY (`username`),
-  KEY `empleadoID` (`empleadoID`),
-  CONSTRAINT `empleadoID` FOREIGN KEY (`empleadoID`) REFERENCES `empleados` (`ID`)
+  KEY `FK_usuarioadmin_empleados` (`empleadoID`),
+  CONSTRAINT `FK_usuarioadmin_empleados` FOREIGN KEY (`empleadoID`) REFERENCES `empleados` (`ID`) ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- Data exporting was unselected.
