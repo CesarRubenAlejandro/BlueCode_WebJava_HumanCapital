@@ -69,15 +69,11 @@ public class CandidatosDetallesServlet extends HttpServlet {
             for (int i = 0; i < certificados.length; i++) {
                 cert.add(certificados[i]);
             }
-            System.out.println("NUMERO DE CERTIFICADOS: " + cert.size());
-
             String[] trabajos = request.getParameterValues("trabajos");
             ArrayList<String> trab = new ArrayList<String>();
             for (int i = 0; i < trabajos.length; i++) {
                 trab.add(trabajos[i]);
             }
-            System.out.println("NUMERO DE TRABAJOS: " + trab.size());
-
             Candidato candidato = new Candidato(idCandidato,nombres, apellidos, 
                     expectativas, direccion, telefono, titulo, universidad, email, estado, cert, trab);
             DatabaseConnector.modificarCandidato(candidato);
