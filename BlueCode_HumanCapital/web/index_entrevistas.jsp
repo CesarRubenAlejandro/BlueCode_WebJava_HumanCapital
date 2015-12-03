@@ -17,27 +17,33 @@
         <div id="wrapper">
             <jsp:include page="sidebar.html"></jsp:include>
             <div id="page-content-wrapper">
-        <h2>Entrevistas</h2>
-        <table class="table table-responsive table-striped">
-            <tr>
-                <th>Candidato</th>
-                <th>Entrevistador</th>
-                <th>Fecha</th>
-                <th>Detalles</th>
-                <th>Borrar</th>
-            </tr>
-            <%
-                for (Entrevista actual: entrevistas){
-                    out.println("<tr>");
-                    out.println("<td>" + actual.getCandidato().getNombres() + "</td>");
-                    out.println("<td>" + actual.getEntrevistador().getNombre() + "</td>");
-                    out.println("<td>" + actual.getFecha()+ "</td>");
-                    out.println("<td><a class='btn btn-primary' href=EntrevistasServlet?accion=verDetalles&idDetalles=" + actual.getID() + "> Detalles </a></td>");
-                    out.println("<td><a class='btn btn-danger' href=EntrevistasServlet?accion=borrar&idBorrar=" + actual.getID() + "> Borrar </a></td>");
-                    out.println("</tr>");
-                }
-            %>
-        </table>
+                <a class="btn btn-success" href="EntrevistasServlet?accion=nueva">Nueva Entrevista</a>
+                <h2>Entrevistas</h2>
+                <table class="table table-responsive table-striped">
+                    <thead>
+                        <tr>
+                            <th>Candidato</th>
+                            <th>Entrevistador</th>
+                            <th>Fecha</th>
+                            <th>Detalles</th>
+                            <th>Borrar</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    <%
+                        for (Entrevista actual: entrevistas){
+                            out.println("<tr>");
+                            out.println("<td>" + actual.getCandidato().getNombres() + "</td>");
+                            out.println("<td>" + actual.getEntrevistador().getNombre() + "</td>");
+                            out.println("<td>" + actual.getFecha()+ "</td>");
+                            out.println("<td><a class='btn btn-primary' href=EntrevistasServlet?accion=verDetalles&idDetalles=" + actual.getID() + "> Detalles </a></td>");
+                            out.println("<td><a class='btn btn-danger' href=EntrevistasServlet?accion=borrar&idBorrar=" + actual.getID() + "> Borrar </a></td>");
+                            out.println("</tr>");
+                        }
+                    %>
+                    <tbody>
+                </table>
+            </div>
         </div>
     </body>
 </html>

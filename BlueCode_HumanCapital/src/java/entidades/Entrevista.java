@@ -26,14 +26,12 @@ public class Entrevista {
     public Entrevista() {
     }
     
-    public Entrevista(Date fecha, String plataforma, String feedback, Empleado entrevistador, Candidato candidato) {
+    public Entrevista(Date fecha, String plataforma, String feedback, int entrevistadorID, int candidatoID) {
         this.fecha = fecha;
         this.plataforma = plataforma;
         this.feedback = feedback;
-        this.entrevistador = entrevistador;
-        this.candidato = candidato;
-        this.candidatoID = candidato.getId();
-        this.entrevistadorID = entrevistador.getID();
+        this.candidatoID = candidatoID;
+        this.entrevistadorID = entrevistadorID;
         this.ID = "" + this.candidatoID + this.entrevistadorID + this.fecha;
     }
 

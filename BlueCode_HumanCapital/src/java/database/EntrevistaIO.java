@@ -9,6 +9,7 @@ import entidades.Candidato;
 import entidades.Empleado;
 import entidades.Entrevista;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -55,5 +56,25 @@ public class EntrevistaIO {
             Logger.getLogger(EmpleadoIO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return entrevistas;
+    }
+    
+    public static void insertarEntrevista(Entrevista entrevista, Connection con) {
+        try {
+            PreparedStatement insertEntrevistaStatement = 
+                    con.prepareStatement("INSERT INTO Entrevistas"
+                    + "(candidatoID, entrevistadorID, fecha, plataforma, feedback) "
+                    + "VALUES(?,?,?,?,?)");
+            insertEntrevistaStatement.setInt(1, entrevista.getCandidatoID());
+            insertEntrevistaStatement.setInt(2, entrevista.getEntrevistadorID());
+            insertEntrevistaStatement.setDate(3, entrevista.getFecha());
+            insertEntrevistaStatement.setString(4, entrevista.getPlataforma());
+            insertEntrevistaStatement.setString(5, entrevista.getFeedback());
+            insertEntrevistaStatement.executeUpdate();
+            
+            
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            Logger.getLogger(DatabaseConnector.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }

@@ -106,4 +106,40 @@ public class EmpleadoIO {
         return null;
     }
     
+    /**
+     * Metodo para obtener la lista de entrevistadores
+     * @param con
+     * @return 
+     */
+    public static ArrayList<Empleado> getEntrevistadores(Connection con){
+        ArrayList<Empleado> entrevistadores = new ArrayList<Empleado>();
+        Statement stmtEntrevistadores;
+        try {
+            stmtEntrevistadores = con.createStatement();
+            ResultSet rsEntrevistadores = stmtEntrevistadores.executeQuery("SELECT * FROM empleados WHERE esEntrevistador = (1)");
+            while (rsEntrevistadores.next()){
+                // agregar informacion de empleado
+                Empleado auxEntrevistador = new Empleado();
+                auxEntrevistador.setID(rsEntrevistadores.getInt("ID"));
+                auxEntrevistador.setSalario(rsEntrevistadores.getDouble("salario"));
+                auxEntrevistador.setPuesto(rsEntrevistadores.getString("puesto"));
+                auxEntrevistador.setDiasDeVacaciones(rsEntrevistadores.getInt("diasDeVacaciones"));
+                // agregar nombre y apellidos desde candidato
+                Statement stmtNombres = con.createStatement();
+                ResultSet rsCandidato = stmtNombres.executeQuery("SELECT nombres, apellidos "
+                        + "FROM candidatos "
+                        + "WHERE ID = " + auxEntrevistador.getID());
+                if (rsCandidato.next()){
+                    auxEntrevistador.setNombre(rsCandidato.getString(1));
+                    auxEntrevistador.setApellido(rsCandidato.getString(2));
+                }
+                entrevistadores.add(auxEntrevistador);
+            }
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(EmpleadoIO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return entrevistadores;
+    }
+    
 }
