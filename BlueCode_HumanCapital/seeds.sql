@@ -103,30 +103,29 @@ INSERT INTO Empleados VALUES (
   4,
   44000,
   'Portero',
-  10
+  10,
+  0
 );
 
 INSERT INTO Empleados VALUES (
   5,
   30000,
   'Programador',
-  7
+  7,
+  0
 );
 
 INSERT INTO Empleados VALUES (
   6,
   15000,
   'Peluquera',
-  14
+  14,
+  1
 );
 ################################################################################
 
--- Entrevistadores
-INSERT INTO Entrevistadores VALUES (6);
-################################################################################
-
 -- Administradores
-INSERT INTO Administradores VALUES (6, 'sara', '1234');
+INSERT INTO usuarioadmin VALUES ('sara', '1234', 6);
 ################################################################################
 
 -- Entrevistas
