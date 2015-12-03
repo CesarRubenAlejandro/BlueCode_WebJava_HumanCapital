@@ -54,7 +54,7 @@ CREATE TABLE IF NOT EXISTS `empleados` (
   `esEntrevistador` bit(1) NOT NULL,
   PRIMARY KEY (`ID`),
   UNIQUE KEY `ID` (`ID`),
-  CONSTRAINT `empleados_ibfk_1` FOREIGN KEY (`ID`) REFERENCES `candidatos` (`ID`) ON DELETE CASCADE
+  CONSTRAINT `empleados_ibfk_1` FOREIGN KEY (`ID`) REFERENCES `candidatos` (`ID`) ON DELETE CASCADE ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- Data exporting was unselected.
@@ -93,8 +93,8 @@ CREATE TABLE IF NOT EXISTS `usuarioadmin` (
   `password` varchar(50) NOT NULL,
   `empleadoID` int(11) NOT NULL,
   PRIMARY KEY (`username`),
-  KEY `empleadoID` (`empleadoID`),
-  CONSTRAINT `empleadoID` FOREIGN KEY (`empleadoID`) REFERENCES `empleados` (`ID`)
+  KEY `FK_usuarioadmin_empleados` (`empleadoID`),
+  CONSTRAINT `FK_usuarioadmin_empleados` FOREIGN KEY (`empleadoID`) REFERENCES `empleados` (`ID`) ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- Data exporting was unselected.
