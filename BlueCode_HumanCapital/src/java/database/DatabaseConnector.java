@@ -68,21 +68,34 @@ public class DatabaseConnector {
             stmtCandidato.setInt(9, candidato.getEstado());
             stmtCandidato.executeUpdate();
             
+            // eliminar certificados previos
+            Statement eliminaCertificadoStatement = con.createStatement();
+            eliminaCertificadoStatement.executeUpdate("DELETE FROM certificados WHERE candidatoID = " + candidato.getId());
+            
             //inserta los certificados
             for (String certificado : candidato.getCertificados()) {
-                Statement updateCertificadoStatement = con.createStatement();
-                updateCertificadoStatement.executeUpdate("UPDATE Certificados "
-                        + "SET certificado = " + certificado + " "
-                        + "WHERE candidatoID = " + candidato.getId());
+                PreparedStatement insertCertificadoStatement = con.prepareStatement("INSERT INTO Certificados "
+                        + "(candidatoId, certificado) "
+                        + "VALUES(?,?)");
+                insertCertificadoStatement.setInt(1, candidato.getId());
+                insertCertificadoStatement.setString(2, certificado);
+                insertCertificadoStatement.executeUpdate();
             }
             
+            // eliminar trabajos previos
+            Statement eliminaTrabajosStatement = con.createStatement();
+            eliminaCertificadoStatement.executeUpdate("DELETE FROM trabajosanteriores WHERE candidatoID = " + candidato.getId());
+            
              //inserta los trabajos anteriores
-            for (String trabajoAnterior : candidato.getTrabajosAnteriores()) {
-                Statement updateTrabajoAnteriorStatement = con.createStatement();
-                updateTrabajoAnteriorStatement.executeUpdate("UPDATE TrabajosAnteriores "
-                        + "SET nombre = " + trabajoAnterior + " "
-                        + "WHERE candidatoID = " + candidato.getId());
+             for (String trabajoAnterior : candidato.getTrabajosAnteriores()) {
+                PreparedStatement insertTrabajoAnteriorStatement = con.prepareStatement("INSERT INTO trabajosanteriores "
+                        + "(candidatoId, nombre) "
+                        + "VALUES(?,?)");
+                insertTrabajoAnteriorStatement.setInt(1, candidato.getId());
+                insertTrabajoAnteriorStatement.setString(2, trabajoAnterior);
+                insertTrabajoAnteriorStatement.executeUpdate();
             }
+            
         } catch (SQLException ex) {
             ex.printStackTrace();
             Logger.getLogger(DatabaseConnector.class.getName()).log(Level.SEVERE, null, ex);
@@ -109,16 +122,16 @@ public class DatabaseConnector {
                 if (expresion.condicion(candidato)) {
                     // Certificados
                     Statement stmtCertificados = con.createStatement();
-                    ResultSet rsCertificados = stmtCertificados.executeQuery("SELECT * FROM Candidatos WHERE ID = " + candidato.getId());
+                    ResultSet rsCertificados = stmtCertificados.executeQuery("SELECT * FROM certificados WHERE candidatoID = " + candidato.getId());
                     while (rsCertificados.next()) {
-                        candidato.getCertificados().add(rsCertificados.getString(1));
+                        candidato.getCertificados().add(rsCertificados.getString(2));
                     }
 
                     // Trabajos Anteriores
                     Statement stmtTrabajosAnteriores = con.createStatement();
-                    ResultSet rsTrabajosAnteriores = stmtTrabajosAnteriores.executeQuery("SELECT * FROM Candidatos WHERE ID = " + candidato.getId());
+                    ResultSet rsTrabajosAnteriores = stmtTrabajosAnteriores.executeQuery("SELECT * FROM trabajosanteriores WHERE candidatoID = " + candidato.getId());
                     while (rsTrabajosAnteriores.next()) {
-                        candidato.getTrabajosAnteriores().add(rsTrabajosAnteriores.getString(1));
+                        candidato.getTrabajosAnteriores().add(rsTrabajosAnteriores.getString(2));
                     }
                     candidatos.add(candidato);
                 }

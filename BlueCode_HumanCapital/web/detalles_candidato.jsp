@@ -13,17 +13,6 @@
     ArrayList<String> trabajosAnt = candidato.getTrabajosAnteriores();
 
 %>
-<%  /*Candidato candidato = new Candidato(123, "Tigre Antonio", "Kelloggs", "Muy altas", "Valle del Cereal", "811299302", "Tigre", "Zucaritas", "tonio@email.com", Candidato.RECHAZADO);
-     ArrayList<String> certificados = new ArrayList();
-     certificados.add("Certificacion en Azucar");
-     certificados.add("Certificacion en Cereales");
-     certificados.add("Certificacion genial");
-
-     ArrayList<String> trabajosAnt = new ArrayList();
-     trabajosAnt.add("Tigger en WinniePooh");
-     trabajosAnt.add("Basquetbolista profesional");
-     trabajosAnt.add("Conferencista motivacional"); */
-%>
 
 <!DOCTYPE html>
 <html>

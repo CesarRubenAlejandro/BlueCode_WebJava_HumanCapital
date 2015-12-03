@@ -16,19 +16,24 @@ public class Empleado implements Serializable {
     private String puesto;
     private double salario;
     private int diasDeVacaciones;
+    private boolean esEntrevistador;
 
-    public Empleado(int ID, String puesto, double salario, int diasDeVacaciones) {
+    public Empleado(int ID, String puesto, double salario, int diasDeVacaciones, boolean esEntrevistador) {
         this.ID = ID;
         this.puesto = puesto;
         this.salario = salario;
         this.diasDeVacaciones = diasDeVacaciones;
+        this.esEntrevistador = esEntrevistador;
     }
 
-    public Empleado(String puesto, double salario, int diasDeVacaciones) {
-        this.puesto = puesto;
-        this.salario = salario;
-        this.diasDeVacaciones = diasDeVacaciones;
+    public boolean isEsEntrevistador() {
+        return esEntrevistador;
     }
+
+    public void setEsEntrevistador(boolean esEntrevistador) {
+        this.esEntrevistador = esEntrevistador;
+    }
+
 
     public int getID() {
         return ID;
