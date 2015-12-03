@@ -70,4 +70,76 @@ public class EmpleadoIO {
         }
     }
     
+    /**
+     * Metodo para obtener un empleado
+     * @param con
+     * @param idEmpleado 
+     */
+    public static Empleado getEmpleado(Connection con, int idEmpleado) {
+        Statement stmtEmpleado;
+        try {
+            stmtEmpleado = con.createStatement();
+            ResultSet rsEmpleado = stmtEmpleado.executeQuery("SELECT * FROM empleados WHERE ID = "
+                    + idEmpleado);
+            if (rsEmpleado.next()){
+                // agregar informacion de empleado
+                Empleado auxEmpleado = new Empleado();
+                auxEmpleado.setID(rsEmpleado.getInt("ID"));
+                auxEmpleado.setSalario(rsEmpleado.getDouble("salario"));
+                auxEmpleado.setPuesto(rsEmpleado.getString("puesto"));
+                auxEmpleado.setDiasDeVacaciones(rsEmpleado.getInt("diasDeVacaciones"));
+                // agregar nombre y apellidos desde candidato
+                Statement stmtNombre = con.createStatement();
+                ResultSet rsCandidato = stmtNombre.executeQuery("SELECT nombres, apellidos "
+                        + "FROM candidatos "
+                        + "WHERE ID = " + auxEmpleado.getID());
+                if (rsCandidato.next()){
+                    auxEmpleado.setNombre(rsCandidato.getString(1));
+                    auxEmpleado.setApellido(rsCandidato.getString(2));
+                }
+                return auxEmpleado;
+            }
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(EmpleadoIO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+    
+    /**
+     * Metodo para obtener la lista de entrevistadores
+     * @param con
+     * @return 
+     */
+    public static ArrayList<Empleado> getEntrevistadores(Connection con){
+        ArrayList<Empleado> entrevistadores = new ArrayList<Empleado>();
+        Statement stmtEntrevistadores;
+        try {
+            stmtEntrevistadores = con.createStatement();
+            ResultSet rsEntrevistadores = stmtEntrevistadores.executeQuery("SELECT * FROM empleados WHERE esEntrevistador = (1)");
+            while (rsEntrevistadores.next()){
+                // agregar informacion de empleado
+                Empleado auxEntrevistador = new Empleado();
+                auxEntrevistador.setID(rsEntrevistadores.getInt("ID"));
+                auxEntrevistador.setSalario(rsEntrevistadores.getDouble("salario"));
+                auxEntrevistador.setPuesto(rsEntrevistadores.getString("puesto"));
+                auxEntrevistador.setDiasDeVacaciones(rsEntrevistadores.getInt("diasDeVacaciones"));
+                // agregar nombre y apellidos desde candidato
+                Statement stmtNombres = con.createStatement();
+                ResultSet rsCandidato = stmtNombres.executeQuery("SELECT nombres, apellidos "
+                        + "FROM candidatos "
+                        + "WHERE ID = " + auxEntrevistador.getID());
+                if (rsCandidato.next()){
+                    auxEntrevistador.setNombre(rsCandidato.getString(1));
+                    auxEntrevistador.setApellido(rsCandidato.getString(2));
+                }
+                entrevistadores.add(auxEntrevistador);
+            }
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(EmpleadoIO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return entrevistadores;
+    }
+    
 }

@@ -9,34 +9,39 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Candidatos</title>
-    </head>
+    <jsp:include page="head.html"></jsp:include>
     <body>
-        <h1>Candidatos</h1>
-        <a href="crear_candidato.jsp">Nuevo candidato</a>
-        <table>
-            <thead>
-                <th> Nombre </th>
-                <th> Correo </th>
-                <th> Estado </th>
-                <th> Detalles </th>
-                <th> Eliminar </th>
-            </thead>
-            <tbody>
-                <% ArrayList<Candidato> candidatos = (ArrayList) request.getAttribute("candidatos");
-                   for (int i = 0; i < candidatos.size(); i++) { %>
-                <tr>
-                    <% Candidato c = candidatos.get(i); %>
-                    <td><%= c.getNombres() + " " + c.getApellidos() %></td>
-                    <td><%= c.getEmail() %></td>
-                    <td><%= c.getEstado() %></td>
-                    <td><a href="CandidatosDetallesServlet?id=<%= c.getId() %>">Detalles</a></td>
-                    <td><a href="CandidatosEliminarServlet?id=<%= c.getId() %>">Eliminar</a></td>
-                </tr>
-                <% } %>
-            </tbody>
-        </table>
+        <div id="wrapper">
+            <jsp:include page="sidebar.html"></jsp:include>
+            <div id="page-content-wrapper">
+                <div class="row col-md-12">
+                    <a class="btn btn-success pull-right" href="crear_candidato.jsp">Nuevo candidato</a>
+                    <h2>Candidatos</h2>
+                </div>
+                <table class="table table-responsive table-striped table-hover table-condensed">
+                    <thead>
+                        <th> Nombre </th>
+                        <th> Correo </th>
+                        <th> Estado </th>
+                        <th> Detalles </th>
+                        <th> Eliminar </th>
+                    </thead>
+                    <tbody>
+                        <% ArrayList<Candidato> candidatos = (ArrayList) request.getAttribute("candidatos");
+                           for (int i = 0; i < candidatos.size(); i++) { %>
+                        <tr>
+                            <% Candidato c = candidatos.get(i); %>
+                            <td><%= c.getNombres() + " " + c.getApellidos() %></td>
+                            <td><%= c.getEmail() %></td>
+                            <td><%= c.getEstado() %></td>
+                            <td><a class="btn btn-primary" href="CandidatosDetallesServlet?id=<%= c.getId() %>">Detalles</a></td>
+                            <td><a class="btn btn-danger" href="CandidatosEliminarServlet?id=<%= c.getId() %>">Eliminar</a></td>
+                        </tr>
+                        <% } %>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    <jsp:include page="scripts.html"></jsp:include>
     </body>
 </html>
