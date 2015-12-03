@@ -6,8 +6,11 @@
 package business;
 
 import database.DatabaseConnector;
+import entidades.Candidato;
+import entidades.Empleado;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -33,6 +36,8 @@ public class EmpleadosServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String accion = request.getParameter("accion");
+        System.out.println("Accion en Servlet "+ accion);
+        
         String url = "/index_empleados.jsp";
         if (accion.equals("cargar")){
             // agregar la lista de empleados al request
@@ -43,10 +48,25 @@ public class EmpleadosServlet extends HttpServlet {
             DatabaseConnector.borrarEmpleado(idEmpleado);
             // agregar la lista actualizada al request
             request.setAttribute("empleados", DatabaseConnector.getEmpleados());
+        } else if (accion.equals("nuevoEmpleado")){
+            url = "/crear_empleado.jsp";
+            ArrayList<Candidato> candidatos = DatabaseConnector.listaCandidatos(c->c.getEstado() == Candidato.ACEPTADO);
+            request.setAttribute("candidatos", candidatos);
+        } else if (accion.equals("guardarNuevo")) {
+            Empleado empleado = new Empleado();
+            empleado.setID(Integer.parseInt(request.getParameter("candidato")));
+            empleado.setPuesto(request.getParameter("puesto"));
+            empleado.setSalario(Double.parseDouble(request.getParameter("salario")));
+            empleado.setDiasDeVacaciones(Integer.parseInt(request.getParameter("vacaciones")));
+            empleado.setEsEntrevistador(request.getParameter("esEntrevistador")!= null);
+            DatabaseConnector.guardarEmpleado(empleado);
+            // agregar la lista actualizada al request
+            request.setAttribute("empleados", DatabaseConnector.getEmpleados());
         }
         ServletContext sc = this.getServletContext();
         RequestDispatcher rd = sc.getRequestDispatcher(url);
         rd.forward(request, response);
+      
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

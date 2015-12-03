@@ -9,10 +9,12 @@ import entidades.Candidato;
 import entidades.Empleado;
 import entidades.Entrevista;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -39,7 +41,7 @@ public class EntrevistaIO {
                 auxEntrevista.setEntrevistaID(rsEntrevistas.getInt("entrevistaID"));
                 auxEntrevista.setCandidatoID(rsEntrevistas.getInt("candidatoID"));
                 auxEntrevista.setEntrevistadorID(rsEntrevistas.getInt("entrevistadorID"));
-                auxEntrevista.setFecha(rsEntrevistas.getDate("fecha"));
+                auxEntrevista.setFecha(rsEntrevistas.getTimestamp("fecha"));
                 auxEntrevista.setPlataforma(rsEntrevistas.getString("plataforma"));
                 auxEntrevista.setFeedback(rsEntrevistas.getString("feedback"));
                 
@@ -66,7 +68,7 @@ public class EntrevistaIO {
                     + "VALUES(?,?,?,?,?)");
             insertEntrevistaStatement.setInt(1, entrevista.getCandidatoID());
             insertEntrevistaStatement.setInt(2, entrevista.getEntrevistadorID());
-            insertEntrevistaStatement.setDate(3, entrevista.getFecha());
+            insertEntrevistaStatement.setTimestamp(3, new java.sql.Timestamp(entrevista.getFecha().getTime()));
             insertEntrevistaStatement.setString(4, entrevista.getPlataforma());
             insertEntrevistaStatement.setString(5, entrevista.getFeedback());
             insertEntrevistaStatement.executeUpdate();
@@ -115,5 +117,24 @@ public class EntrevistaIO {
             Logger.getLogger(EmpleadoIO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
+    }
+    
+    public static void modificarEntrevista(Connection con, Entrevista entrevista) {
+        try {
+            PreparedStatement stmtEntrevista = con.prepareStatement("UPDATE Entrevistas "
+                    + "SET "
+                    + "WHERE ID = " + entrevista.getEntrevistaID());
+            stmtEntrevista.setInt(1, entrevista.getCandidatoID());
+            stmtEntrevista.setInt(2, entrevista.getEntrevistadorID());
+            stmtEntrevista.setTimestamp(3, new java.sql.Timestamp(entrevista.getFecha().getTime()));
+            stmtEntrevista.setInt(4, entrevista.getEntrevistaID());
+            stmtEntrevista.setString(5, entrevista.getPlataforma());
+            stmtEntrevista.setString(6, entrevista.getFeedback());
+            stmtEntrevista.executeUpdate();
+            
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            Logger.getLogger(DatabaseConnector.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }

@@ -4,11 +4,14 @@
     Author     : Lalo
 --%>
 
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="java.text.DateFormat"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="entidades.Entrevista"%>
 <%@page import="entidades.Candidato"%>
 <%@page import="entidades.Empleado"%>
 <%@page import="java.util.ArrayList"%>
+<%@page import="java.util.Date"%>
 
 <%
   Entrevista entrevista = (Entrevista) request.getAttribute("entrevista");
@@ -58,7 +61,9 @@
                 <div class="form-group">
                     <label for="fecha" class="col-sm-2 control-label">Fecha</label>
                     <div class="col-sm-10">
-                        <input class="form-control" type="text" name="fecha" value="<%= entrevista.getFecha() %>" readonly>
+                        <% DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+                           String fecha = df.format(entrevista.getFecha()); %>
+                        <input class="form-control datepicker" type="text" name="fecha" value="<%= fecha %>" readonly>
                     </div>
                 </div>
                 
@@ -98,5 +103,10 @@
             }
         </script>
         <jsp:include page="scripts.html"></jsp:include>
+        <script>
+            $('.datepicker').datepicker({
+                format: 'dd/mm/yyyy'
+            });
+        </script>
     </body>
 </html>

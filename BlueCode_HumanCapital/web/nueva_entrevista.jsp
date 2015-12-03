@@ -56,7 +56,7 @@
                 <div class="form-group">
                     <label for="fecha" class="col-sm-2 control-label">Fecha</label>
                     <div class="col-sm-10">
-                        <input class="form-control" type="text" name="fecha">
+                        <input class="form-control datepicker" type="text" name="fecha">
                     </div>
                 </div>
                 
@@ -80,7 +80,11 @@
             </form>
             </div>
         </div>
-            
         <jsp:include page="scripts.html"></jsp:include>
+        <script>
+            $('.datepicker').datepicker({
+                format: 'dd/mm/yyyy'
+            });
+        </script>
     </body>
 </html>
