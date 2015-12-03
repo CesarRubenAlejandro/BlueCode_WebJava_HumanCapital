@@ -13,6 +13,7 @@
         <title>JSP Page</title>
     </head>
     <body>
+        <jsp:useBean id = "datos" scope= "session" class = "database.DatabaseConnector" />
         <h1>Capital Humano</h1>
         <form action="LoginServlet" method="post">
             <p>

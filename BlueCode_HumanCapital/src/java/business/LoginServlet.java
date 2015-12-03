@@ -5,6 +5,7 @@
  */
 package business;
 
+import database.DatabaseConnector;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
@@ -38,7 +39,8 @@ public class LoginServlet extends HttpServlet {
            
         ServletContext sc = getServletContext();
         String url = null;
-        if (username.equals("a") && password.equals("a")) {
+        
+        if (DatabaseConnector.loginSuccessful(username, password)) {
             request.setAttribute(Keys.USERNAME, username);
             url = "/index.jsp";
         } else {

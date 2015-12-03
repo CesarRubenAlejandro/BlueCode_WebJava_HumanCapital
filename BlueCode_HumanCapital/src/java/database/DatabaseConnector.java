@@ -89,4 +89,8 @@ public class DatabaseConnector {
     public static void modificarEntrevista(Entrevista entrevista) {
         EntrevistaIO.modificarEntrevista(con, entrevista);
     }
+    
+    public static boolean loginSuccessful(String username, String password) {
+        return AdminIO.loginSuccessful(con, username, password);
+    }
 }
