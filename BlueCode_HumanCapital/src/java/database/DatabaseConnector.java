@@ -77,8 +77,4 @@ public class DatabaseConnector {
     public static void insertarEntrevista(Entrevista entrevista) {
         EntrevistaIO.insertarEntrevista(entrevista, con);
     }
-    
-    public static void guardarEmpleado(Empleado empleado) {
-        EmpleadoIO.guardarEmpleado(con, empleado);
-    }
 }

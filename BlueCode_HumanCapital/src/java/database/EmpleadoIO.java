@@ -142,21 +142,4 @@ public class EmpleadoIO {
         return entrevistadores;
     }
     
-    /**
-     * Metodo para guardar un empleado de la base de datos
-     * @param con
-     * @param empleado 
-     */
-    public static void guardarEmpleado(Connection con, Empleado empleado){
-        try {
-            Statement stmt = con.createStatement();
-            stmt.executeUpdate("INSERT INTO empleados (ID, salario, puesto, diasDeVacaciones, esEntrevistador) VALUES (" + empleado.getID() + ", "
-                    + empleado.getSalario() + ", '" + empleado.getPuesto() +"', " + empleado.getDiasDeVacaciones() + ", " + empleado.isEsEntrevistador()
-                    + ")");
-        } catch (SQLException ex) {
-            ex.printStackTrace();
-            Logger.getLogger(DatabaseConnector.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-    
 }
