@@ -70,4 +70,40 @@ public class EmpleadoIO {
         }
     }
     
+    /**
+     * Metodo para obtener un empleado
+     * @param con
+     * @param idEmpleado 
+     */
+    public static Empleado getEmpleado(Connection con, int idEmpleado) {
+        Statement stmtEmpleado;
+        try {
+            stmtEmpleado = con.createStatement();
+            ResultSet rsEmpleado = stmtEmpleado.executeQuery("SELECT * FROM empleados WHERE ID = "
+                    + idEmpleado);
+            if (rsEmpleado.next()){
+                // agregar informacion de empleado
+                Empleado auxEmpleado = new Empleado();
+                auxEmpleado.setID(rsEmpleado.getInt("ID"));
+                auxEmpleado.setSalario(rsEmpleado.getDouble("salario"));
+                auxEmpleado.setPuesto(rsEmpleado.getString("puesto"));
+                auxEmpleado.setDiasDeVacaciones(rsEmpleado.getInt("diasDeVacaciones"));
+                // agregar nombre y apellidos desde candidato
+                Statement stmtNombre = con.createStatement();
+                ResultSet rsCandidato = stmtNombre.executeQuery("SELECT nombres, apellidos "
+                        + "FROM candidatos "
+                        + "WHERE ID = " + auxEmpleado.getID());
+                if (rsCandidato.next()){
+                    auxEmpleado.setNombre(rsCandidato.getString(1));
+                    auxEmpleado.setApellido(rsCandidato.getString(2));
+                }
+                return auxEmpleado;
+            }
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(EmpleadoIO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+    
 }

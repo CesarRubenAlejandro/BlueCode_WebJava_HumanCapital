@@ -17,5 +17,6 @@
         <h1>Bienvenido</h1>
         <a href="CandidatosIndexServlet">Candidatos</a>
         <a href="EmpleadosServlet?accion=cargar">Empleados</a>
+        <a href="EntrevistasServlet?accion=index">Entrevistas</a>
     </body>
 </html>
