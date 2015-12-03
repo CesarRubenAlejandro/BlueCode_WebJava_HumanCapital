@@ -17,7 +17,7 @@
         <div id="wrapper">
             <jsp:include page="sidebar.html"></jsp:include>
             <div id="page-content-wrapper">
-                <a class="btn btn-success" href="EntrevistasServlet?accion=nueva">Nueva Entrevista</a>
+                <a class="btn btn-success pull-right" href="EntrevistasServlet?accion=nueva">Nueva Entrevista</a>
                 <h2>Entrevistas</h2>
                 <table class="table table-responsive table-striped">
                     <thead>
@@ -36,8 +36,8 @@
                             out.println("<td>" + actual.getCandidato().getNombres() + "</td>");
                             out.println("<td>" + actual.getEntrevistador().getNombre() + "</td>");
                             out.println("<td>" + actual.getFecha()+ "</td>");
-                            out.println("<td><a class='btn btn-primary' href=EntrevistasServlet?accion=verDetalles&idDetalles=" + actual.getID() + "> Detalles </a></td>");
-                            out.println("<td><a class='btn btn-danger' href=EntrevistasServlet?accion=borrar&idBorrar=" + actual.getID() + "> Borrar </a></td>");
+                            out.println("<td><a class='btn btn-primary' href=EntrevistasServlet?accion=verDetalles&idDetalles=" + actual.getEntrevistaID() + "> Detalles </a></td>");
+                            out.println("<td><a class='btn btn-danger' href=EntrevistasServlet?accion=borrar&idBorrar=" + actual.getEntrevistaID() + "> Borrar </a></td>");
                             out.println("</tr>");
                         }
                     %>

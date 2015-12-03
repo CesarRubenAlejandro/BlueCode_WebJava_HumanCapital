@@ -24,6 +24,10 @@
         <servlet-name>EntrevistasServlet</servlet-name>
         <servlet-class>business.EntrevistasServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>LoginServlet</servlet-name>
+        <servlet-class>business.LoginServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>CandidatosIndexServlet</servlet-name>
         <url-pattern>/CandidatosIndexServlet</url-pattern>
@@ -47,6 +51,10 @@
     <servlet-mapping>
         <servlet-name>EntrevistasServlet</servlet-name>
         <url-pattern>/EntrevistasServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>LoginServlet</servlet-name>
+        <url-pattern>/LoginServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

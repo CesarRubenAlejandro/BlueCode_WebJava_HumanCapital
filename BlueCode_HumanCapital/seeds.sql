@@ -133,6 +133,7 @@ INSERT INTO Entrevistas VALUES (
   4,
   6,
   '2015-10-01',
+  1,
   'Skype',
   'Muy buena entrevista'
 );
@@ -141,6 +142,7 @@ INSERT INTO Entrevistas VALUES (
   1,
   6,
   '2015-10-10',
+  2,
   'Skype',
   'El candidato hablo en italiano y no le entendi'
 );

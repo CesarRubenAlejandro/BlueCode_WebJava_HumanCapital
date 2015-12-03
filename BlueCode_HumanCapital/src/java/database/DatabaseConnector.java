@@ -77,4 +77,16 @@ public class DatabaseConnector {
     public static void insertarEntrevista(Entrevista entrevista) {
         EntrevistaIO.insertarEntrevista(entrevista, con);
     }
+    
+    public static void borrarEntrevista(int idEntrevista) {
+        EntrevistaIO.borrarEntrevista(con, idEntrevista);
+    }
+    
+    public static Entrevista getEntrevista(int idEntrevista) {
+        return EntrevistaIO.getEntrevista(con, idEntrevista);
+    }
+    
+    public static boolean loginSuccessful(String username, String password) {
+        return AdminIO.loginSuccessful(con, username, password);
+    }
 }
