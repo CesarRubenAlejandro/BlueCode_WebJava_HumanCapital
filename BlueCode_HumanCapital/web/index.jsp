@@ -16,5 +16,6 @@
         class = "database.DatabaseConnector" />
         <h1>Bienvenido</h1>
         <a href="CandidatosIndexServlet">Candidatos</a>
+        <a href="EmpleadosServlet?accion=cargar">Empleados</a>
     </body>
 </html>

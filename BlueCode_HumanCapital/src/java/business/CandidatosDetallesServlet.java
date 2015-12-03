@@ -56,14 +56,8 @@ public class CandidatosDetallesServlet extends HttpServlet {
             String email = request.getParameter("email");
 
             String estadoString = request.getParameter("estado");
-            int estado = 0;
-            if (estadoString.equals(Candidato.ACEPTADO)) {
-                estado = 1;
-            } else if (estadoString.equals(Candidato.RECHAZADO)) {
-                estado = 2;
-            } else if (estadoString.equals(Candidato.PENDIENTE)) {
-                estado = 0;
-            }
+            int estado = Integer.parseInt(estadoString);
+            
             String[] certificados = request.getParameterValues("certificados");
             ArrayList<String> cert = new ArrayList<String>();
             for (int i = 0; i < certificados.length; i++) {

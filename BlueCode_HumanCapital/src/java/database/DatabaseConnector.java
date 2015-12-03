@@ -57,4 +57,12 @@ public class DatabaseConnector {
     public static void insertarCandidato(Candidato candidato) {
         CandidatoIO.insertarCandidato(candidato, con);
     }
+    
+    public static ArrayList<Empleado> getEmpleados(){
+        return EmpleadoIO.getEmpleados(con);
+    }
+    
+    public static void borrarEmpleado(int idEmpleado){
+        EmpleadoIO.borrarEmpleado(con, idEmpleado);
+    }
 }

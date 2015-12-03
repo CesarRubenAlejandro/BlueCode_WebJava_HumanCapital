@@ -17,13 +17,37 @@ public class Empleado implements Serializable {
     private double salario;
     private int diasDeVacaciones;
     private boolean esEntrevistador;
+    // atributos solo para la aplicacion web
+    private String nombre;
+    private String apellido;
 
-    public Empleado(int ID, String puesto, double salario, int diasDeVacaciones, boolean esEntrevistador) {
+    public Empleado(int ID, String puesto, double salario, int diasDeVacaciones, boolean esEntrevistador, String nombre, String apellido) {
         this.ID = ID;
         this.puesto = puesto;
         this.salario = salario;
         this.diasDeVacaciones = diasDeVacaciones;
         this.esEntrevistador = esEntrevistador;
+        this.nombre = nombre;
+        this.apellido = apellido;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public Empleado() {
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getApellido() {
+        return apellido;
+    }
+
+    public void setApellido(String apellido) {
+        this.apellido = apellido;
     }
 
     public boolean isEsEntrevistador() {

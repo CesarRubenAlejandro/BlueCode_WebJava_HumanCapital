@@ -16,6 +16,10 @@
         <servlet-name>CrearCandidatoServlet</servlet-name>
         <servlet-class>business.CrearCandidatoServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>EmpleadosServlet</servlet-name>
+        <servlet-class>business.EmpleadosServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>CandidatosIndexServlet</servlet-name>
         <url-pattern>/CandidatosIndexServlet</url-pattern>
@@ -31,6 +35,10 @@
     <servlet-mapping>
         <servlet-name>CrearCandidatoServlet</servlet-name>
         <url-pattern>/CrearCandidatoServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EmpleadosServlet</servlet-name>
+        <url-pattern>/EmpleadosServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
