@@ -17,7 +17,7 @@
         <div id="wrapper">
             <jsp:include page="sidebar.html"></jsp:include>
             <div id="page-content-wrapper">
-                <a class="btn btn-success" href="EntrevistasServlet?accion=nueva">Nueva Entrevista</a>
+                <a class="btn btn-success pull-right" href="EntrevistasServlet?accion=nueva">Nueva Entrevista</a>
                 <h2>Entrevistas</h2>
                 <table class="table table-responsive table-striped">
                     <thead>
