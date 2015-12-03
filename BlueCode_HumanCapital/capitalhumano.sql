@@ -15,19 +15,6 @@ CREATE DATABASE IF NOT EXISTS `capital_humano` /*!40100 DEFAULT CHARACTER SET la
 USE `capital_humano`;
 
 
--- Dumping structure for table capital_humano.administradores
-CREATE TABLE IF NOT EXISTS `administradores` (
-  `ID` int(11) NOT NULL,
-  `username` varchar(255) NOT NULL,
-  `password` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`ID`),
-  UNIQUE KEY `ID` (`ID`,`username`),
-  CONSTRAINT `administradores_ibfk_1` FOREIGN KEY (`ID`) REFERENCES `empleados` (`ID`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- Data exporting was unselected.
-
-
 -- Dumping structure for table capital_humano.candidatos
 CREATE TABLE IF NOT EXISTS `candidatos` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
