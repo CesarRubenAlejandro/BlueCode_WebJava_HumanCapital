@@ -36,6 +36,7 @@ public class EntrevistaIO {
             while (rsEntrevistas.next()){
                 // agregar informacion de la entrevista
                 Entrevista auxEntrevista = new Entrevista();
+                auxEntrevista.setEntrevistaID(rsEntrevistas.getInt("entrevistaID"));
                 auxEntrevista.setCandidatoID(rsEntrevistas.getInt("candidatoID"));
                 auxEntrevista.setEntrevistadorID(rsEntrevistas.getInt("entrevistadorID"));
                 auxEntrevista.setFecha(rsEntrevistas.getDate("fecha"));
@@ -48,7 +49,6 @@ public class EntrevistaIO {
                 
                 Empleado auxEntrevistador = EmpleadoIO.getEmpleado(con, auxEntrevista.getEntrevistadorID());
                 auxEntrevista.setEntrevistador(auxEntrevistador);
-                auxEntrevista.setID();
                 entrevistas.add(auxEntrevista);
             }
             
