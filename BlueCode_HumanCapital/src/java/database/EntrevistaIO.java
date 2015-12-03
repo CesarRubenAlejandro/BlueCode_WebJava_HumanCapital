@@ -77,4 +77,43 @@ public class EntrevistaIO {
             Logger.getLogger(DatabaseConnector.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
+    public static void borrarEntrevista(Connection con, int idEntrevista){
+        try {
+            Statement stmt = con.createStatement();
+            stmt.executeUpdate("DELETE FROM entrevistas WHERE entrevistaID = " + idEntrevista);
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            Logger.getLogger(DatabaseConnector.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    /**
+     * Metodo para obtener una entrevista
+     * @param con
+     * @param idEntrevista
+     */
+    public static Entrevista getEntrevista(Connection con, int idEntrevista) {
+        Statement stmtEntrevista;
+        try {
+            stmtEntrevista = con.createStatement();
+            ResultSet rsEntrevista = stmtEntrevista.executeQuery("SELECT * FROM entrevistas WHERE entrevistaID = "
+                    + idEntrevista);
+            if (rsEntrevista.next()){
+                // agregar informacion de empleado
+                Entrevista auxEntrevista = new Entrevista();
+                auxEntrevista.setEntrevistaID(rsEntrevista.getInt("entrevistaID"));
+                auxEntrevista.setCandidatoID(rsEntrevista.getInt("candidatoID"));
+                auxEntrevista.setEntrevistadorID(rsEntrevista.getInt("entrevistadorID"));
+                auxEntrevista.setFecha(rsEntrevista.getDate("fecha"));
+                auxEntrevista.setPlataforma(rsEntrevista.getString("plataforma"));
+                auxEntrevista.setFeedback(rsEntrevista.getString("feedback"));
+
+                return auxEntrevista;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(EmpleadoIO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
 }

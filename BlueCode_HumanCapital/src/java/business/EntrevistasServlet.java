@@ -51,6 +51,19 @@ public class EntrevistasServlet extends HttpServlet {
                             c.getEstado() == Candidato.RECHAZADO);
             request.setAttribute("candidatos", candidatos);
             request.setAttribute("entrevistadores", DatabaseConnector.getEntrevistadores());
+        } else if (accion.equals("borrar")) {
+            int id = parseInt(request.getParameter("idBorrar"));
+            DatabaseConnector.borrarEntrevista(id);
+            request.setAttribute("entrevistas", DatabaseConnector.getEntrevistas());
+        } else if (accion.equals("verDetalles")) {
+            int id = parseInt(request.getParameter("idDetalles"));
+            request.setAttribute("entrevista", DatabaseConnector.getEntrevista(id));
+            ArrayList<Candidato> candidatos = DatabaseConnector
+                    .listaCandidatos(c->c.getEstado() == Candidato.PENDIENTE ||
+                            c.getEstado() == Candidato.RECHAZADO);
+            request.setAttribute("candidatos", candidatos);
+            request.setAttribute("entrevistadores", DatabaseConnector.getEntrevistadores());
+            url = "/detalles_entrevista.jsp";
         }
         ServletContext sc = this.getServletContext();
         RequestDispatcher rd = sc.getRequestDispatcher(url);
@@ -108,6 +121,8 @@ public class EntrevistasServlet extends HttpServlet {
             Entrevista entrevista = new Entrevista(fecha, plataforma, feedback,
                     parseInt(entrevistadorID), parseInt(candidatoID));
             DatabaseConnector.insertarEntrevista(entrevista);
+        } else {
+            
         }
         
         processRequest(request, response);
