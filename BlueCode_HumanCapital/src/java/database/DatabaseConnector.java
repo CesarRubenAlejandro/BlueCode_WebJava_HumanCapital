@@ -85,4 +85,8 @@ public class DatabaseConnector {
     public static Entrevista getEntrevista(int idEntrevista) {
         return EntrevistaIO.getEntrevista(con, idEntrevista);
     }
+    
+    public static void modificarEntrevista(Entrevista entrevista) {
+        EntrevistaIO.modificarEntrevista(con, entrevista);
+    }
 }

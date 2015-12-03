@@ -4,9 +4,12 @@
     Author     : Lalo
 --%>
 
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="java.text.DateFormat"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="entidades.Entrevista"%>
 <%@page import="java.util.ArrayList"%>
+<%@page import="java.util.Date"%>
 <%
   ArrayList<Entrevista> entrevistas = (ArrayList) request.getAttribute("entrevistas");
 %>
@@ -30,12 +33,13 @@
                         </tr>
                     </thead>
                     <tbody>
-                    <%
+                    <%  DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
                         for (Entrevista actual: entrevistas){
+                            String fecha = df.format(actual.getFecha());
                             out.println("<tr>");
                             out.println("<td>" + actual.getCandidato().getNombres() + "</td>");
                             out.println("<td>" + actual.getEntrevistador().getNombre() + "</td>");
-                            out.println("<td>" + actual.getFecha()+ "</td>");
+                            out.println("<td>" + fecha+ "</td>");
                             out.println("<td><a class='btn btn-primary' href=EntrevistasServlet?accion=verDetalles&idDetalles=" + actual.getEntrevistaID() + "> Detalles </a></td>");
                             out.println("<td><a class='btn btn-danger' href=EntrevistasServlet?accion=borrar&idBorrar=" + actual.getEntrevistaID() + "> Borrar </a></td>");
                             out.println("</tr>");

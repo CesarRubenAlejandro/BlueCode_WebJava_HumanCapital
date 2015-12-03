@@ -11,10 +11,12 @@ import entidades.Entrevista;
 import java.io.IOException;
 import java.io.PrintWriter;
 import static java.lang.Integer.parseInt;
-import java.sql.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -98,31 +100,30 @@ public class EntrevistasServlet extends HttpServlet {
             throws ServletException, IOException {
         String id = request.getParameter("id");
         
-        if (id == null) {
-            String candidatoID = request.getParameter("candidato");
-            String entrevistadorID = request.getParameter("entrevistador");
-            String fechaS = request.getParameter("fecha");
-            String plataforma = request.getParameter("plataforma");
-            String feedback = request.getParameter("feedback");
-            
-            SimpleDateFormat formatter = new SimpleDateFormat("dd-MMM-yyyy");
-            Date fecha;
-            try {
-		fecha = (Date) formatter.parse(fechaS);
-            } catch (ParseException e) {
-                java.util.Date fechaU = new java.util.Date();
-                fecha = new Date(fechaU.getDate());
-            }
-            
-            System.out.println("Los ids son:");
-            System.out.println(entrevistadorID);
-            System.out.println(candidatoID);
-            
-            Entrevista entrevista = new Entrevista(fecha, plataforma, feedback,
+        String candidatoID = request.getParameter("candidato");
+        String entrevistadorID = request.getParameter("entrevistador");
+        String fechaS = request.getParameter("fecha");
+        String plataforma = request.getParameter("plataforma");
+        String feedback = request.getParameter("feedback");
+
+        SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");
+        Date fecha;
+
+        try {
+            fecha = (Date) formatter.parse(fechaS);
+        } catch (ParseException ex) {
+            fecha = new Date();
+            Logger.getLogger(EntrevistasServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        Entrevista entrevista = new Entrevista(fecha, plataforma, feedback,
                     parseInt(entrevistadorID), parseInt(candidatoID));
+            
+        if (id == null) {
             DatabaseConnector.insertarEntrevista(entrevista);
         } else {
-            
+            entrevista.setEntrevistaID(parseInt(id));
+            DatabaseConnector.modificarEntrevista(entrevista);
         }
         
         processRequest(request, response);
