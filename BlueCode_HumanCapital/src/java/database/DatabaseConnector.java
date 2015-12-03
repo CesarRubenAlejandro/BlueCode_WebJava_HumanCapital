@@ -62,6 +62,10 @@ public class DatabaseConnector {
         return EmpleadoIO.getEmpleados(con);
     }
     
+    public static Empleado getEmpleado(int idEmpleado){
+        return EmpleadoIO.getEmpleado(con, idEmpleado);
+    }
+    
     public static void borrarEmpleado(int idEmpleado){
         EmpleadoIO.borrarEmpleado(con, idEmpleado);
     }

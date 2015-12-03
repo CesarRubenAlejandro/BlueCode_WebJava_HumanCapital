@@ -60,11 +60,6 @@ public class EntrevistasServlet extends HttpServlet {
         } else if (accion.equals("verDetalles")) {
             int id = parseInt(request.getParameter("idDetalles"));
             request.setAttribute("entrevista", DatabaseConnector.getEntrevista(id));
-            ArrayList<Candidato> candidatos = DatabaseConnector
-                    .listaCandidatos(c->c.getEstado() == Candidato.PENDIENTE ||
-                            c.getEstado() == Candidato.RECHAZADO);
-            request.setAttribute("candidatos", candidatos);
-            request.setAttribute("entrevistadores", DatabaseConnector.getEntrevistadores());
             url = "/detalles_entrevista.jsp";
         }
         ServletContext sc = this.getServletContext();
@@ -106,7 +101,7 @@ public class EntrevistasServlet extends HttpServlet {
         String plataforma = request.getParameter("plataforma");
         String feedback = request.getParameter("feedback");
 
-        SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");
+        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
         Date fecha;
 
         try {
