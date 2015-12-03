@@ -66,6 +66,10 @@ public class DatabaseConnector {
         EmpleadoIO.borrarEmpleado(con, idEmpleado);
     }
     
+    public static void guardarEmpleado(Empleado empleado) {
+        EmpleadoIO.guardarEmpleado(con, empleado);
+    }
+    
     public static ArrayList<Empleado> getEntrevistadores() {
         return EmpleadoIO.getEntrevistadores(con);
     }
