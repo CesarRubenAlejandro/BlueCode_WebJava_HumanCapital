@@ -47,7 +47,7 @@ CREATE TABLE IF NOT EXISTS `certificados` (
 
 -- Dumping structure for table capital_humano.empleados
 CREATE TABLE IF NOT EXISTS `empleados` (
-  `ID` int(11) NOT NULL,
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
   `salario` double NOT NULL,
   `puesto` varchar(255) NOT NULL,
   `diasDeVacaciones` int(11) DEFAULT NULL,
