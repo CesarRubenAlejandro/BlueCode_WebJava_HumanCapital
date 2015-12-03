@@ -12,6 +12,7 @@ import java.sql.Date;
  * @author Lalo
  */
 public class Entrevista {
+    private int entrevistaID;
     private int entrevistadorID;
     private int candidatoID;
     private Date fecha;
@@ -20,8 +21,6 @@ public class Entrevista {
     
     private Empleado entrevistador;
     private Candidato candidato;
-    
-    private String ID;
 
     public Entrevista() {
     }
@@ -32,7 +31,6 @@ public class Entrevista {
         this.feedback = feedback;
         this.candidatoID = candidatoID;
         this.entrevistadorID = entrevistadorID;
-        this.ID = "" + this.candidatoID + this.entrevistadorID + this.fecha;
     }
 
     public Date getFecha() {
@@ -90,12 +88,12 @@ public class Entrevista {
     public void setCandidatoID(int candidatoID) {
         this.candidatoID = candidatoID;
     }
-    
-    public void setID() {
-        this.ID = "" + this.candidatoID + this.entrevistadorID + this.fecha;
+
+    public int getEntrevistaID() {
+        return entrevistaID;
     }
-    
-    public String getID() {
-        return this.ID;
+
+    public void setEntrevistaID(int entrevistaID) {
+        this.entrevistaID = entrevistaID;
     }
 }
