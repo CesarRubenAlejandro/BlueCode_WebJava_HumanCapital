@@ -157,5 +157,24 @@ public class EmpleadoIO {
             ex.printStackTrace();
             Logger.getLogger(DatabaseConnector.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }   
+    }
+    
+    /**
+     * Metodo para modificar un empleado de la base de datos
+     * @param con
+     * @param empleado 
+     */
+    public static void modificarEmpleado(Connection con, Empleado empleado){
+        try {
+            Statement stmt = con.createStatement();
+            stmt.executeUpdate("UPDATE empleados SET salario=" + empleado.getSalario() + 
+                    ", puesto='" + empleado.getPuesto() + 
+                    "', diasDeVacaciones=" + empleado.getDiasDeVacaciones() +
+                    ", esEntrevistador=" + empleado.isEsEntrevistador() + 
+                    " WHERE ID=" + empleado.getID());
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            Logger.getLogger(DatabaseConnector.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }  
 }
