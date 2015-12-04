@@ -20,7 +20,7 @@
                 <div class="form-group">
                     <label for="candidato" class="col-sm-2 control-label">Candidato</label>
                     <div class="col-sm-10">
-                        <select class="form-control" name="candidato">
+                        <select class="form-control" name="candidato" required="required">
                             <% ArrayList<Candidato> candidatos = (ArrayList) request.getAttribute("candidatos");
                             for (int i = 0; i < candidatos.size(); i++) { 
                              Candidato c = candidatos.get(i); %>
@@ -33,28 +33,28 @@
                 <div class="form-group">
                     <label for="puesto" class="col-sm-2 control-label">Puesto</label>
                     <div class="col-sm-10">
-                        <input class="form-control" type="text" name="puesto">
+                        <input class="form-control" type="text" name="puesto" required="required">
                     </div>
                 </div>
                         
                 <div class="form-group">
                     <label for="salario" class="col-sm-2 control-label">Salario</label>
                     <div class="col-sm-10">
-                        <input class="form-control" type="number" name="salario">
+                        <input class="form-control" type="number" name="salario" step="0.01" min="0" required="required">
                     </div>
                 </div>
                         
                 <div class="form-group">
                     <label for="vacaciones" class="col-sm-2 control-label">Dias de vacaciones</label>
                     <div class="col-sm-10">
-                        <input class="form-control" type="number" name="vacaciones">
+                        <input class="form-control" type="number" name="vacaciones" required="required">
                     </div>
                 </div>
                         
                 <div class="form-group">
                     <label for="esEntrevistador" class="col-sm-2 control-label">¿Entrevistador?</label>
                     <div class="col-sm-1">
-                        <input class="form-control" type="checkbox" name="esEntrevistador" value="1" style="width: 25px; height: 25px;"> 
+                        <input class="form-control" type="checkbox" name="esEntrevistador" value="1" style="width: 25px; height: 25px;" > 
                     </div>
                 </div>        
                 <input class="btn btn-success" type="submit" value="Guardar">

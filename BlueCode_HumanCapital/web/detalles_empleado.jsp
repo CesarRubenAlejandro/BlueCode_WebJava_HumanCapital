@@ -33,56 +33,56 @@
                <div class="form-group">
                     <label for="nombres" class="col-sm-2 control-label">Nombre de pila</label>
                     <div class="col-sm-10">
-                        <input class="form-control inputFields" type="text" name="nombres" value="<%=candidato.getNombres()%>" readonly>
+                        <input class="form-control inputFields" type="text" name="nombres" value="<%=candidato.getNombres()%>" required="required" readonly>
                     </div>
                 </div>
                 
                 <div class="form-group">
                     <label for="apellidos" class="col-sm-2 control-label">Apellidos</label>
                     <div class="col-sm-10">
-                        <input class="form-control inputFields" type="text" name="apellidos" value="<%= candidato.getApellidos()%>" readonly>
+                        <input class="form-control inputFields" type="text" name="apellidos" value="<%= candidato.getApellidos()%>" required="required" readonly>
                     </div>
                 </div>
                     
                 <div class="form-group">
                     <label for="direccion" class="col-sm-2 control-label">Dirección</label>
                     <div class="col-sm-10">
-                        <input class="form-control inputFields" type="text" name="direccion" value="<%=candidato.getDireccion()%>" readonly>
+                        <input class="form-control inputFields" type="text" name="direccion" value="<%=candidato.getDireccion()%>" required="required" readonly>
                     </div>
                 </div>
                 
                 <div class="form-group">
                     <label for="telefono" class="col-sm-2 control-label">Teléfono</label>
                     <div class="col-sm-10">
-                        <input class="form-control inputFields" type="text" name="telefono" value="<%=candidato.getTelefono()%>" readonly>
+                        <input class="form-control inputFields" type="text" name="telefono" value="<%=candidato.getTelefono()%>" required="required" readonly>
                     </div>
                 </div>
                     
                 <div class="form-group">
                     <label for="email" class="col-sm-2 control-label">Correo</label>
                     <div class="col-sm-10">
-                        <input class="form-control inputFields" type="text" name="email" value="<%=candidato.getEmail()%>" readonly>
+                        <input class="form-control inputFields" type="text" name="email" value="<%=candidato.getEmail()%>" required="required" readonly>
                     </div>
                 </div>
                 
                 <div class="form-group">
                     <label for="titulo" class="col-sm-2 control-label">Título</label>
                     <div class="col-sm-10">
-                        <input class="form-control inputFields" type="text" name="titulo" value="<%=candidato.getTitulo()%>" readonly>
+                        <input class="form-control inputFields" type="text" name="titulo" value="<%=candidato.getTitulo()%>" required="required" readonly>
                     </div>
                 </div>
                 
                 <div class="form-group">
                     <label for="universidad" class="col-sm-2 control-label">Universidad</label>
                     <div class="col-sm-10">
-                        <input class="form-control inputFields" type="text" name="universidad" value="<%=candidato.getUniversidad()%>" readonly>
+                        <input class="form-control inputFields" type="text" name="universidad" value="<%=candidato.getUniversidad()%>" required="required" readonly>
                     </div>
                 </div>
 
                 <div class="form-group">
                     <label for="expectativas" class="col-sm-2 control-label">Expectativas económicas</label>
                     <div class="col-sm-10">
-                        <input class="form-control inputFields" type="text" name="expectativas" value="<%=candidato.getExpectativas()%>" readonly>
+                        <input class="form-control inputFields" type="text" name="expectativas" value="<%=candidato.getExpectativas()%>" required="required" readonly>
                     </div>
                 </div>
                     
@@ -157,21 +157,21 @@
                 <div class="form-group">
                     <label for="puesto" class="col-sm-2 control-label">Puesto</label>
                     <div class="col-sm-10">
-                        <input class="inputFields form-control" type="text" name="puesto" value="<%=empleado.getPuesto()%>" readonly>
+                        <input class="inputFields form-control" type="text" name="puesto" value="<%=empleado.getPuesto()%>" required="required" readonly>
                     </div>
                 </div>
                         
                 <div class="form-group">
                     <label for="salario" class="col-sm-2 control-label">Salario</label>
                     <div class="col-sm-10">
-                        <input class="inputFields form-control" type="number" name="salario" step="0.01" min="0" value="<%=empleado.getSalario()%>" readonly>
+                        <input class="inputFields form-control" type="number" name="salario" step="0.01" min="0" value="<%=empleado.getSalario()%>" required="required" readonly>
                     </div>
                 </div>
                         
                 <div class="form-group">
                     <label for="vacaciones" class="col-sm-2 control-label">Dias de vacaciones</label>
                     <div class="col-sm-10">
-                        <input class="inputFields form-control" type="number" name="vacaciones" value="<%=empleado.getDiasDeVacaciones()%>" readonly>
+                        <input class="inputFields form-control" type="number" name="vacaciones" value="<%=empleado.getDiasDeVacaciones()%>" required="required" readonly>
                     </div>
                 </div>
                         
