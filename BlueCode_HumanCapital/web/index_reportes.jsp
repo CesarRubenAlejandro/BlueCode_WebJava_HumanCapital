@@ -20,9 +20,9 @@
             <div class="row col-md-12">
                 <h2>Reportes</h2>
             </div>
-            <div class="form-group">
-                <label for="columna" class="col-sm-1 pull-right control-label">Filtar por</label>
-                    <div class="col-sm-3 pull-right">
+            <div class="col-md-12 form-group">
+                <label for="columna" class="col-sm-1 col-sm-offset-6 control-label">Filtar por</label>
+                    <div class="col-sm-2">
                         <select class="form-control" name="columna" id="columna">
                             <option value="titulo">Titulo</option>
                             <option value="universidad">Universidad</option>
@@ -32,7 +32,7 @@
                             <option value="tipo">Estado</option>
                         </select>
                     </div>
-                <div class="col-sm-3 pull-right">
+                <div class="col-sm-offset-9">
                     <input id ="searchBox" class="form-control" type="text" name="search" onkeyup="filtra()">
                 </div>
             </div>
