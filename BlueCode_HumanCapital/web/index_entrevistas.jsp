@@ -20,8 +20,12 @@
         <div id="wrapper">
             <%@include file="WEB-INF/jspf/sidebar.jspf"%>
             <div id="page-content-wrapper">
-                <a class="btn btn-success pull-right" href="EntrevistasServlet?accion=nueva">Nueva Entrevista</a>
-                <h2>Entrevistas</h2>
+                <div class="row col-md-12">
+                    <h2>Entrevistas</h2>
+                </div>
+                <div class="pull-right" style="margin-bottom: 20px;">
+                    <a class="btn btn-success" href="EntrevistasServlet?accion=nueva">Nueva entrevista</a>
+                </div>
                 <table class="table table-responsive table-striped">
                     <thead>
                         <tr>

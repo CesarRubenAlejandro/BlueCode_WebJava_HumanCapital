@@ -18,8 +18,10 @@
             <%@include file="WEB-INF/jspf/sidebar.jspf"%>
             <div id="page-content-wrapper">
                 <div class="row col-md-12">
-                    <a class="btn btn-success pull-right" href="EmpleadosServlet?accion=nuevoEmpleado">Nuevo empleado</a>
                     <h2>Empleados</h2>
+                </div>
+                <div class="pull-right" style="margin-bottom: 20px;">
+                    <a class="btn btn-success" href="EmpleadosServlet?accion=nuevoEmpleado">Nuevo empleado</a>
                 </div>
                 <table class="table table-responsive table-striped table-hover table-condensed">
                     <thead>
