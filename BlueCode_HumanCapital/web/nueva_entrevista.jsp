@@ -26,7 +26,7 @@
                 <div class="form-group">
                     <label for="candidato" class="col-sm-2 control-label">Candidato</label>
                     <div class="col-sm-10">
-                        <select class="form-control" name="candidato">
+                        <select class="form-control" name="candidato" required="required">
                         <%
                             for (Candidato can : candidatos) {
                         %>
@@ -41,7 +41,7 @@
                 <div class="form-group">
                     <label for="entrevistador" class="col-sm-2 control-label">Entrevistador</label>
                     <div class="col-sm-10">
-                        <select class="form-control" name="entrevistador">
+                        <select class="form-control" name="entrevistador" required="required">
                         <%
                             for (Empleado ent : entrevistadores) {
                         %>
@@ -56,21 +56,21 @@
                 <div class="form-group">
                     <label for="fecha" class="col-sm-2 control-label">Fecha</label>
                     <div class="col-sm-10">
-                        <input class="form-control datepicker" type="text" name="fecha">
+                        <input class="form-control datepicker" type="text" name="fecha" required="required">
                     </div>
                 </div>
                 
                 <div class="form-group">
                     <label for="plataforma" class="col-sm-2 control-label">Plataforma</label>
                     <div class="col-sm-10">
-                        <input class="form-control" type="text" name="plataforma">
+                        <input class="form-control" type="text" name="plataforma" required="required">
                     </div>
                 </div>
                 
                 <div class="form-group">
                     <label for="feedback" class="col-sm-2 control-label">Feedback</label>
                     <div class="col-sm-10">
-                        <textarea class="form-control" name="feedback"></textarea>
+                        <textarea class="form-control" name="feedback" required="required"></textarea>
                     </div>
                 </div>
                 

@@ -28,7 +28,7 @@
                 <div class="form-group">
                     <label for="estado" class="col-sm-2 control-label">Estado</label>
                     <div class="col-sm-10">
-                        <select id="estadoBox" class="form-control" name="estado" disabled>
+                        <select id="estadoBox" class="form-control" name="estado" disabled required="required">
                                 <option value="0">Pendiente</option>
                                 <option value="1">Aceptado</option>
                                 <option value="2">Rechazado</option>
@@ -39,56 +39,56 @@
                 <div class="form-group">
                     <label for="nombres" class="col-sm-2 control-label">Nombre de pila</label>
                     <div class="col-sm-10">
-                        <input class="form-control inputFields" type="text" name="nombres" value="<%=candidato.getNombres()%>" readonly>
+                        <input class="form-control inputFields" type="text" name="nombres" value="<%=candidato.getNombres()%>" readonly required="required">
                     </div>
                 </div>
                 
                 <div class="form-group">
                     <label for="apellidos" class="col-sm-2 control-label">Apellidos</label>
                     <div class="col-sm-10">
-                        <input class="form-control inputFields" type="text" name="apellidos" value="<%= candidato.getApellidos()%>" readonly>
+                        <input class="form-control inputFields" type="text" name="apellidos" value="<%= candidato.getApellidos()%>" readonly required="required">
                     </div>
                 </div>
                     
                 <div class="form-group">
                     <label for="direccion" class="col-sm-2 control-label">Dirección</label>
                     <div class="col-sm-10">
-                        <input class="form-control inputFields" type="text" name="direccion" value="<%=candidato.getDireccion()%>" readonly>
+                        <input class="form-control inputFields" type="text" name="direccion" value="<%=candidato.getDireccion()%>" readonly required="required">
                     </div>
                 </div>
                 
                 <div class="form-group">
                     <label for="telefono" class="col-sm-2 control-label">Teléfono</label>
                     <div class="col-sm-10">
-                        <input class="form-control inputFields" type="text" name="telefono" value="<%=candidato.getTelefono()%>" readonly>
+                        <input class="form-control inputFields" type="text" name="telefono" value="<%=candidato.getTelefono()%>" readonly required="required">
                     </div>
                 </div>
                     
                 <div class="form-group">
                     <label for="email" class="col-sm-2 control-label">Correo</label>
                     <div class="col-sm-10">
-                        <input class="form-control inputFields" type="text" name="email" value="<%=candidato.getEmail()%>" readonly>
+                        <input class="form-control inputFields" type="text" name="email" value="<%=candidato.getEmail()%>" readonly required="required">
                     </div>
                 </div>
                 
                 <div class="form-group">
                     <label for="titulo" class="col-sm-2 control-label">Título</label>
                     <div class="col-sm-10">
-                        <input class="form-control inputFields" type="text" name="titulo" value="<%=candidato.getTitulo()%>" readonly>
+                        <input class="form-control inputFields" type="text" name="titulo" value="<%=candidato.getTitulo()%>" readonly required="required">
                     </div>
                 </div>
                 
                 <div class="form-group">
                     <label for="universidad" class="col-sm-2 control-label">Universidad</label>
                     <div class="col-sm-10">
-                        <input class="form-control inputFields" type="text" name="universidad" value="<%=candidato.getUniversidad()%>" readonly>
+                        <input class="form-control inputFields" type="text" name="universidad" value="<%=candidato.getUniversidad()%>" readonly required="required">
                     </div>
                 </div>
 
                 <div class="form-group">
                     <label for="expectativas" class="col-sm-2 control-label">Expectativas económicas</label>
                     <div class="col-sm-10">
-                        <input class="form-control inputFields" type="text" name="expectativas" value="<%=candidato.getExpectativas()%>" readonly>
+                        <input class="form-control inputFields" type="text" name="expectativas" value="<%=candidato.getExpectativas()%>" readonly required="required">
                     </div>
                 </div>
                     
