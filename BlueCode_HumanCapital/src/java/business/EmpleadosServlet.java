@@ -64,13 +64,41 @@ public class EmpleadosServlet extends HttpServlet {
             request.setAttribute("empleados", DatabaseConnector.getEmpleados());
         } else if (accion.equals("verDetalles")){
             String id = request.getParameter("idDetalles");
-            if (id != null) {
                 int idEmp = Integer.parseInt(id);
                 Empleado empleado = DatabaseConnector.getEmpleado(idEmp);
+                Candidato candidato = DatabaseConnector.getCandidato(idEmp);
                 request.setAttribute("empleado", empleado);
+                request.setAttribute("candidato", candidato);
                 url = "/detalles_empleado.jsp";
-            }
         } else if (accion.equals("guardarCambios")) {
+            //modificar candidato
+            int idCandidato = Integer.parseInt(request.getParameter("idEmpleado"));
+            String nombres = request.getParameter("nombres");
+            String apellidos = request.getParameter("apellidos");
+            String expectativas = request.getParameter("expectativas");
+            String direccion = request.getParameter("direccion");
+            String telefono = request.getParameter("telefono");
+            String titulo = request.getParameter("titulo");
+            String universidad = request.getParameter("universidad");
+            String email = request.getParameter("email");
+
+            int estado = 1;
+            
+            String[] certificados = request.getParameterValues("certificados");
+            ArrayList<String> cert = new ArrayList<String>();
+            for (int i = 0; i < certificados.length; i++) {
+                cert.add(certificados[i]);
+            }
+            String[] trabajos = request.getParameterValues("trabajos");
+            ArrayList<String> trab = new ArrayList<String>();
+            for (int i = 0; i < trabajos.length; i++) {
+                trab.add(trabajos[i]);
+            }
+            Candidato candidato = new Candidato(idCandidato,nombres, apellidos, 
+                    expectativas, direccion, telefono, titulo, universidad, email, estado, cert, trab);
+            DatabaseConnector.modificarCandidato(candidato);
+            
+            //modificar empleado
             int idEmpleado = Integer.parseInt(request.getParameter("idEmpleado"));
             String puesto = request.getParameter("puesto");
             String salarioStr = request.getParameter("salario");

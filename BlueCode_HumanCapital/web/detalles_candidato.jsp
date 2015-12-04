@@ -29,9 +29,9 @@
                     <label for="estado" class="col-sm-2 control-label">Estado</label>
                     <div class="col-sm-10">
                         <select id="estadoBox" class="form-control" name="estado" disabled>
-                                <option><%=Candidato.PENDIENTE%></option>
-                                <option><%=Candidato.ACEPTADO%></option>
-                                <option><%=Candidato.RECHAZADO%></option>
+                                <option value="0">Pendiente</option>
+                                <option value="1">Aceptado</option>
+                                <option value="2">Rechazado</option>
                         </select> 
                     </div>
                 </div>
