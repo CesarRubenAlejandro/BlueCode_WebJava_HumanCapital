@@ -41,7 +41,7 @@ public class LoginServlet extends HttpServlet {
         String url = null;
         
         if (DatabaseConnector.loginSuccessful(username, password)) {
-            request.setAttribute(Keys.USERNAME, username);
+            request.getSession().setAttribute(Keys.USERNAME, username);
             url = "/CandidatosIndexServlet";
         } else {
             request.setAttribute(Keys.LOGIN_SUCCESS, "false");

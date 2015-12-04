@@ -15,7 +15,7 @@
     <jsp:include page="head.html"></jsp:include>
     <body>
         <div id="wrapper">
-            <jsp:include page="sidebar.html"></jsp:include>
+            <%@include file="WEB-INF/jspf/sidebar.jspf"%>
             <div id="page-content-wrapper">
             <div class="row col-md-12">
                 <h2>Reportes</h2>

@@ -22,7 +22,7 @@
     <jsp:include page="head.html"></jsp:include>
     <body>
         <div id="wrapper">
-            <jsp:include page="sidebar.html"></jsp:include>
+            <%@include file="WEB-INF/jspf/sidebar.jspf"%>
             <div id="page-content-wrapper">
             <h1>Detalles de <%=empleado.getNombre()%> <%=empleado.getApellido()%> </h1>
             <form class="form-horizontal col-md-9" action="EmpleadosServlet">

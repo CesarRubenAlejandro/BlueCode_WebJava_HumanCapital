@@ -18,7 +18,7 @@
     <jsp:include page="head.html"></jsp:include>
     <body>
         <div id="wrapper">
-            <jsp:include page="sidebar.html"></jsp:include>
+            <%@include file="WEB-INF/jspf/sidebar.jspf"%>
             <div id="page-content-wrapper">
                 <a class="btn btn-success pull-right" href="EntrevistasServlet?accion=nueva">Nueva Entrevista</a>
                 <h2>Entrevistas</h2>
