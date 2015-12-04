@@ -49,21 +49,21 @@
                     <div class="col-sm-10">
                         <% DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
                            String fecha = df.format(entrevista.getFecha()); %>
-                        <input class="form-control datepicker editable" type="text" name="fecha" value="<%= fecha %>" readonly>
+                        <input class="form-control datepicker editable" type="text" name="fecha" value="<%= fecha %>" readonly required="required">
                     </div>
                 </div>
                 
                 <div class="form-group">
                     <label for="plataforma" class="col-sm-2 control-label">Plataforma</label>
                     <div class="col-sm-10">
-                        <input class="form-control editable" type="text" name="plataforma" value="<%= entrevista.getPlataforma() %>" readonly>
+                        <input class="form-control editable" type="text" name="plataforma" value="<%= entrevista.getPlataforma() %>" readonly required="required">
                     </div>
                 </div>
                 
                 <div class="form-group">
                     <label for="feedback" class="col-sm-2 control-label">Feedback</label>
                     <div class="col-sm-10">
-                        <textarea class="form-control editable" name="feedback" readonly><%= entrevista.getFeedback() %></textarea>
+                        <textarea class="form-control editable" name="feedback" readonly required="required"><%= entrevista.getFeedback() %></textarea>
                     </div>
                 </div>
                     

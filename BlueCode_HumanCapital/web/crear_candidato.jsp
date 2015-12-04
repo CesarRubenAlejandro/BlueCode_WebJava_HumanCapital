@@ -17,63 +17,63 @@
                 <div class="form-group">
                     <label for="nombres" class="col-sm-2 control-label">Nombre de pila</label>
                     <div class="col-sm-10">
-                        <input class="form-control" type="text" name="nombres">
+                        <input class="form-control" type="text" name="nombres" required="required">
                     </div>
                 </div>
                 
                 <div class="form-group">
                     <label for="apellidos" class="col-sm-2 control-label">Apellidos</label>
                     <div class="col-sm-10">
-                        <input class="form-control" type="text" name="apellidos">
+                        <input class="form-control" type="text" name="apellidos" required="required">
                     </div>
                 </div>
                 
                 <div class="form-group">
                     <label for="expectativas" class="col-sm-2 control-label">Expectativas económicas</label>
                     <div class="col-sm-10">
-                        <input class="form-control" type="text" name="expectativas">
+                        <input class="form-control" type="text" name="expectativas" required="required">
                     </div>
                 </div>
                 
                 <div class="form-group">
                     <label for="direccion" class="col-sm-2 control-label">Dirección</label>
                     <div class="col-sm-10">
-                        <input class="form-control" type="text" name="direccion">
+                        <input class="form-control" type="text" name="direccion" required="required">
                     </div>
                 </div>
                 
                 <div class="form-group">
                     <label for="telefono" class="col-sm-2 control-label">Teléfono</label>
                     <div class="col-sm-10">
-                        <input class="form-control" type="text" name="telefono">
+                        <input class="form-control" type="text" name="telefono" required="required">
                     </div>
                 </div>
                 
                 <div class="form-group">
                     <label for="titulo" class="col-sm-2 control-label">Título</label>
                     <div class="col-sm-10">
-                        <input class="form-control" type="text" name="titulo">
+                        <input class="form-control" type="text" name="titulo" required="required">
                     </div>
                 </div>
                 
                 <div class="form-group">
                     <label for="universidad" class="col-sm-2 control-label">Universidad</label>
                     <div class="col-sm-10">
-                        <input class="form-control" type="text" name="universidad">
+                        <input class="form-control" type="text" name="universidad" required="required">
                     </div>
                 </div>
                 
                 <div class="form-group">
                     <label for="email" class="col-sm-2 control-label">Email</label>
                     <div class="col-sm-10">
-                        <input class="form-control" type="text" name="email">
+                        <input class="form-control" type="text" name="email" required="required">
                     </div>
                 </div>
                 
                 <div class="form-group">
                     <label for="estado" class="col-sm-2 control-label">Estado</label>
                     <div class="col-sm-10">
-                        <select class="form-control" name="estado">
+                        <select class="form-control" name="estado" required="required">
                                 <option value="aceptado">Aceptado</option>
                                 <option value="rechazado">Rechazado</option>
                                 <option value="pendiente">Pendiente</option>
