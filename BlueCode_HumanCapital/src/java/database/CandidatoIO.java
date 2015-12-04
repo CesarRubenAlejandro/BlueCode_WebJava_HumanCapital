@@ -172,4 +172,46 @@ public class CandidatoIO {
             Logger.getLogger(DatabaseConnector.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
+    public static ArrayList<Candidato> listaCandidatosPreEmpleados(CondicionCandidato expresion, Connection con) {
+        ArrayList<Candidato> candidatos = new ArrayList<>();
+        try {
+            Statement stmtCandidatos = con.createStatement();
+            ResultSet rsCandidatos = stmtCandidatos.executeQuery("SELECT * FROM Candidatos "
+                    + "WHERE ID not in (SELECT ID FROM Empleados)");
+            while (rsCandidatos.next()) {
+                Candidato candidato = new Candidato();
+                candidato.setId(rsCandidatos.getInt(1));
+                candidato.setNombres(rsCandidatos.getString(2));
+                candidato.setApellidos(rsCandidatos.getString(3));
+                candidato.setTitulo(rsCandidatos.getString(4));
+                candidato.setUniversidad(rsCandidatos.getString(5));
+                candidato.setEmail(rsCandidatos.getString(6));
+                candidato.setTelefono(rsCandidatos.getString(7));
+                candidato.setDireccion(rsCandidatos.getString(8));
+                candidato.setExpectativas(rsCandidatos.getString(9));
+                candidato.setEstado(rsCandidatos.getInt(10));
+                if (expresion.condicion(candidato)) {
+                    // Certificados
+                    Statement stmtCertificados = con.createStatement();
+                    ResultSet rsCertificados = stmtCertificados.executeQuery("SELECT * FROM certificados WHERE candidatoID = " + candidato.getId());
+                    while (rsCertificados.next()) {
+                        candidato.getCertificados().add(rsCertificados.getString(2));
+                    }
+
+                    // Trabajos Anteriores
+                    Statement stmtTrabajosAnteriores = con.createStatement();
+                    ResultSet rsTrabajosAnteriores = stmtTrabajosAnteriores.executeQuery("SELECT * FROM trabajosanteriores WHERE candidatoID = " + candidato.getId());
+                    while (rsTrabajosAnteriores.next()) {
+                        candidato.getTrabajosAnteriores().add(rsTrabajosAnteriores.getString(2));
+                    }
+                    candidatos.add(candidato);
+                }
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            Logger.getLogger(DatabaseConnector.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return candidatos;
+    } 
 }

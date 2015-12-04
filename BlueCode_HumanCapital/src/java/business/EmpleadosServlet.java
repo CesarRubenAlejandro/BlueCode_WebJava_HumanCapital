@@ -50,7 +50,7 @@ public class EmpleadosServlet extends HttpServlet {
             request.setAttribute("empleados", DatabaseConnector.getEmpleados());
         } else if (accion.equals("nuevoEmpleado")){
             url = "/crear_empleado.jsp";
-            ArrayList<Candidato> candidatos = DatabaseConnector.listaCandidatos(c->c.getEstado() == Candidato.ACEPTADO);
+            ArrayList<Candidato> candidatos = DatabaseConnector.listaCandidatosPreEmpleados(c->c.getEstado() == Candidato.ACEPTADO);
             request.setAttribute("candidatos", candidatos);
         } else if (accion.equals("guardarNuevo")) {
             Empleado empleado = new Empleado();
@@ -62,7 +62,30 @@ public class EmpleadosServlet extends HttpServlet {
             DatabaseConnector.guardarEmpleado(empleado);
             // agregar la lista actualizada al request
             request.setAttribute("empleados", DatabaseConnector.getEmpleados());
+        } else if (accion.equals("verDetalles")){
+            String id = request.getParameter("idDetalles");
+            if (id != null) {
+                int idEmp = Integer.parseInt(id);
+                Empleado empleado = DatabaseConnector.getEmpleado(idEmp);
+                request.setAttribute("empleado", empleado);
+                url = "/detalles_empleado.jsp";
+            }
+        } else if (accion.equals("guardarCambios")) {
+            int idEmpleado = Integer.parseInt(request.getParameter("idEmpleado"));
+            String puesto = request.getParameter("puesto");
+            String salarioStr = request.getParameter("salario");
+             double salario = Double.parseDouble(salarioStr);
+            String vacacionesStr = request.getParameter("vacaciones");
+             int vacaciones = Integer.parseInt(vacacionesStr);
+            Boolean esEntrevistador = request.getParameter("esEntrevistador")!= null;
+            
+            Empleado empleado = new Empleado(idEmpleado, puesto, salario,
+                    vacaciones, esEntrevistador, null, null);
+            DatabaseConnector.modificarEmpleado(empleado);
+            // agregar la lista actualizada al request
+            request.setAttribute("empleados", DatabaseConnector.getEmpleados());
         }
+        
         ServletContext sc = this.getServletContext();
         RequestDispatcher rd = sc.getRequestDispatcher(url);
         rd.forward(request, response);

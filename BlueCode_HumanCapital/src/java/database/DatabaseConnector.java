@@ -52,7 +52,11 @@ public class DatabaseConnector {
     
     public static ArrayList<Candidato> listaCandidatos(CondicionCandidato expresion) {
         return CandidatoIO.listaCandidatos(expresion, con);
-    }  
+    }
+    
+    public static ArrayList<Candidato> listaCandidatosPreEmpleados(CondicionCandidato expresion) {
+        return CandidatoIO.listaCandidatosPreEmpleados(expresion, con);
+    }
     
     public static void insertarCandidato(Candidato candidato) {
         CandidatoIO.insertarCandidato(candidato, con);
@@ -62,8 +66,8 @@ public class DatabaseConnector {
         return EmpleadoIO.getEmpleados(con);
     }
     
-    public static Empleado getEmpleado(int idEmpleado){
-        return EmpleadoIO.getEmpleado(con, idEmpleado);
+    public static Empleado getEmpleado(int id){
+        return EmpleadoIO.getEmpleado(con, id);
     }
     
     public static void borrarEmpleado(int idEmpleado){
@@ -72,6 +76,10 @@ public class DatabaseConnector {
     
     public static void guardarEmpleado(Empleado empleado) {
         EmpleadoIO.guardarEmpleado(con, empleado);
+    }
+    
+    public static void modificarEmpleado(Empleado empleado) {
+        EmpleadoIO.modificarEmpleado(con, empleado);
     }
     
     public static ArrayList<Empleado> getEntrevistadores() {

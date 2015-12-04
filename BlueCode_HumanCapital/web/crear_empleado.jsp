@@ -62,8 +62,5 @@
             </div>
         </div>
         <jsp:include page="scripts.html"></jsp:include>
-        <script> 
-        $(':checkbox').radiocheck();
-        </script>
     </body>
 </html>
