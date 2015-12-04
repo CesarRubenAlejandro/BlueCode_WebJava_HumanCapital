@@ -24,7 +24,7 @@
                         <th> Correo </th>
                         <th> Estado </th>
                         <th> Detalles </th>
-                        <th> Eliminar </th>
+                        <th> Borrar </th>
                     </thead>
                     <tbody>
                         <% ArrayList<Candidato> candidatos = (ArrayList) request.getAttribute("candidatos");
