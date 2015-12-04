@@ -6,6 +6,7 @@
 package entidades;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 /**
  *
@@ -89,6 +90,106 @@ public class Reporte implements Serializable{
         this.puestoEntrevistador = puestoEntrevistador;
     }
     
+    /**
+     * Metodo para filtrar una lista de reportes en base a coincidencias de 
+     * titulo con texto
+     * @param reportes
+     * @param texto
+     * @return 
+     */
+    public static ArrayList<Reporte> filtraPorTitulo(ArrayList<Reporte> reportes, String texto){
+        ArrayList<Reporte> aux = new ArrayList<Reporte>();
+        for (int i=0; i<reportes.size();i++){
+            if (reportes.get(i).getTituloCandidato().toLowerCase().contains(texto.toLowerCase())){
+                aux.add(reportes.get(i));
+            }
+        }
+        return aux;
+    }
     
+    /**
+     * Metodo para filtrar una lista de reportes en base a coincidencias de 
+     * universidad con texto
+     * @param reportes
+     * @param texto
+     * @return 
+     */
+    public static ArrayList<Reporte> filtraPorUniversidad(ArrayList<Reporte> reportes, String texto){
+        ArrayList<Reporte> aux = new ArrayList<Reporte>();
+        for (int i=0; i<reportes.size();i++){
+            if (reportes.get(i).getUniversidadCandidato().toLowerCase().contains(texto.toLowerCase())){
+                aux.add(reportes.get(i));
+            }
+        }
+        return aux;
+    }
+    
+    /**
+     * Metodo para filtrar una lista de reportes en base a coincidencias de 
+     * certificados con texto
+     * @param reportes
+     * @param texto
+     * @return 
+     */
+    public static ArrayList<Reporte> filtraPorCertificado(ArrayList<Reporte> reportes, String texto){
+        ArrayList<Reporte> aux = new ArrayList<Reporte>();
+        for (int i=0; i<reportes.size();i++){
+            if (reportes.get(i).getCertificadosCandidato().toLowerCase().contains(texto.toLowerCase())){
+                aux.add(reportes.get(i));
+            }
+        }
+        return aux;
+    }
+
+    /**
+     * Metodo para filtrar una lista de reportes en base a coincidencias de 
+     * nombre entrevistador con texto
+     * @param reportes
+     * @param texto
+     * @return 
+     */
+    public static ArrayList<Reporte> filtraPorEntrevistador(ArrayList<Reporte> reportes, String texto){
+        ArrayList<Reporte> aux = new ArrayList<Reporte>();
+        for (int i=0; i<reportes.size();i++){
+            if (reportes.get(i).getNombreEntrevistador().toLowerCase().contains(texto.toLowerCase())){
+                aux.add(reportes.get(i));
+            }
+        }
+        return aux;
+    }
+    
+    /**
+     * Metodo para filtrar una lista de reportes en base a coincidencias de 
+     * puesto entrevistador con texto
+     * @param reportes
+     * @param texto
+     * @return 
+     */
+    public static ArrayList<Reporte> filtraPorPuesto(ArrayList<Reporte> reportes, String texto){
+        ArrayList<Reporte> aux = new ArrayList<Reporte>();
+        for (int i=0; i<reportes.size();i++){
+            if (reportes.get(i).getPuestoEntrevistador().toLowerCase().contains(texto.toLowerCase())){
+                aux.add(reportes.get(i));
+            }
+        }
+        return aux;
+    }
+    
+    /**
+     * Metodo para filtrar una lista de reportes en base a coincidencias de 
+     * estado con texto
+     * @param reportes
+     * @param texto
+     * @return 
+     */
+    public static ArrayList<Reporte> filtraPorEstado(ArrayList<Reporte> reportes, String texto){
+        ArrayList<Reporte> aux = new ArrayList<Reporte>();
+        for (int i=0; i<reportes.size();i++){
+            if (reportes.get(i).getTipoCandidato().toLowerCase().contains(texto.toLowerCase())){
+                aux.add(reportes.get(i));
+            }
+        }
+        return aux;
+    }
     
 }
