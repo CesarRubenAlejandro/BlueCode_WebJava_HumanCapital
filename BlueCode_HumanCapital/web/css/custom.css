@@ -11,5 +11,9 @@ and open the template in the editor.
 
 .form-control[readonly] {
     background-color: #ffffff;
-    color: #7f8c8d;
+    color: #34495e;
+}
+
+.form-control[disabled] {
+    color: #34495e;
 }

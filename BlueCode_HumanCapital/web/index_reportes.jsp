@@ -16,6 +16,7 @@
     <body>
         <div id="wrapper">
             <jsp:include page="sidebar.html"></jsp:include>
+            <div id="page-content-wrapper">
             <div class="row col-md-12">
                 <h2>Reportes</h2>
             </div>
@@ -35,6 +36,7 @@
                     <input id ="searchBox" class="form-control" type="text" name="search" onkeyup="filtra()">
                 </div>
             </div>
+            
             
             <table id="tablaReportes" class="table table-responsive table-striped table-hover table-condensed">
                 <thead>
@@ -62,6 +64,7 @@
                         <% } %>
                 </tbody>
             </table>
+        </div>
         </div>
                 
         <jsp:include page="scripts.html"></jsp:include>
