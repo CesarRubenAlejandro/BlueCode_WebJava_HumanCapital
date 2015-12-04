@@ -5,13 +5,13 @@ USE capital_humano;
 -- Unicamente Candidatos
 INSERT INTO Candidatos VALUES (
   NULL,
-  'Giacomo',
-  'Guilizzoni',
-  'Ingeniero en Pizzas',
-  'Universitá della Pizza di Milano',
+  'Pedro',
+  'Sanchez',
+  'Ingeniero en Informatica',
+  'Tecnologico de Monterrey',
   'giacomo@gmail.com',
   '10218392',
-  'Coliseo Romano 435 Col. Roma',
+  'Fidel Velazquez 1600 Monterrey, Nuevo Leon',
   '4000/mes',
   0
 );
@@ -19,10 +19,10 @@ INSERT INTO Candidatos VALUES (
 INSERT INTO Candidatos VALUES (
   NULL,
   'Marco',
-  'Botton Tuttofare',
-  'Ingeniero en Sistemas',
+  'Juarez',
+  'Licenciado en Sistemas',
   'Politecnico di Milano',
-  'marco@marco.com',
+  'marco@yahoo.com',
   '5551890321',
   'Piazza Leonardo da Vinci, 32',
   '6000/mes',
@@ -46,13 +46,13 @@ INSERT INTO Candidatos VALUES (
 -- Candidatos que ya son empleados
 INSERT INTO Candidatos VALUES (
   NULL,
-  'Memo',
-  'Ochoa',
-  'Ingeniero en Redes y Porterias',
-  'Universidad Televisora de Nayarit SA',
-  'memo_temo@televisa.com',
+  'Francisco Guillermo',
+  'Perez Herrera',
+  'Ingeniero en Redes y Telecomunicaciones',
+  'Universidad de Guadalajara',
+  'memo_memo@udg.com',
   '428379932',
-  'Estadio Azteca 123',
+  'Periferico 293 Mexico DF',
   '50000/mes',
   1
 );
@@ -61,7 +61,7 @@ INSERT INTO Candidatos VALUES (
   NULL,
   'Pedrito',
   'Tutto',
-  'Ingeniero en Tecnologías de la Información',
+  'Ingeniero en Informatica',
   'Instituto Politécnico Nacional',
   'pedriot@marco.com',
   '4359676512',
@@ -73,9 +73,9 @@ INSERT INTO Candidatos VALUES (
 INSERT INTO Candidatos VALUES (
   NULL,
   'Sara',
-  'Sarah',
-  'Licenciado en Peluqueria',
-  'Universidad Televisora de Nayarit SA',
+  'Vazquez',
+  'Licenciado en Animacion',
+  'Universidad del Valle de Veracruz',
   'sarasarah@gmail.com',
   '654902942',
   'Junco de la Vega 432',
@@ -102,7 +102,7 @@ INSERT INTO TrabajosAnteriores VALUES (
 INSERT INTO Empleados VALUES (
   4,
   44000,
-  'Portero',
+  'Tester',
   10,
   0
 );
@@ -118,14 +118,14 @@ INSERT INTO Empleados VALUES (
 INSERT INTO Empleados VALUES (
   6,
   15000,
-  'Peluquera',
+  'Diseñador',
   14,
   1
 );
 ################################################################################
 
 -- Administradores
-INSERT INTO usuarioadmin VALUES ('sara', '1234', 6);
+INSERT INTO usuarioadmin VALUES ('admin', 'root', 6);
 ################################################################################
 
 -- Entrevistas
@@ -144,6 +144,6 @@ INSERT INTO Entrevistas VALUES (
   '2015-10-10',
   2,
   'Skype',
-  'El candidato hablo en italiano y no le entendi'
+  'El candidato muestra una vasta experiencia en el ambito de su carrera'
 );
 ################################################################################
