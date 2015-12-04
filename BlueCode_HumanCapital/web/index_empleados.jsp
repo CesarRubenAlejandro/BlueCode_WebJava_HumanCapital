@@ -40,8 +40,8 @@
                             out.println("<td>" + actual.getPuesto()+ "</td>");
                             out.println("<td>" + actual.getSalario() + "</td>");
                             out.println("<td>" + actual.getDiasDeVacaciones() + "</td>");
-                            out.println("<td><a href=EmpleadosServlet?accion=verDetalles&idDetalles=" + actual.getID() + "> Detalles </a></td>");
-                            out.println("<td><a href=EmpleadosServlet?accion=borrar&idBorrar=" + actual.getID() + "> Borrar </a></td>");
+                            out.println("<td><a class='btn btn-primary' href=EmpleadosServlet?accion=verDetalles&idDetalles=" + actual.getID() + "> Detalles </a></td>");
+                            out.println("<td><a class='btn btn-danger' href=EmpleadosServlet?accion=borrar&idBorrar=" + actual.getID() + "> Borrar </a></td>");
                             out.println("</tr>");
                         }
                     %>
