@@ -162,4 +162,17 @@ public class Candidato implements Serializable {
     public void setEstado(int estado) {
         this.estado = estado;
     }
+    
+    public String getEstadoStr() {
+        switch (this.estado) {
+            case 0:
+                return "Pendiente";
+            case 1:
+                return "Aceptado";
+            case 2:
+                return "Rechazado";
+            default:
+                return "Rechazado";
+        }
+    }
 }
