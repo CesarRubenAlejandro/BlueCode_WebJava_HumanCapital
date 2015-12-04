@@ -17,6 +17,7 @@
                 <div class="row col-md-12">
                     <a class="btn btn-success pull-right" href="crear_candidato.jsp">Nuevo candidato</a>
                     <h2>Candidatos</h2>
+                    <a href="#menu-toggle" class=" btn btn-default" id="menu-toggle"><span class="icon-bar"></span></a>
                 </div>
                 <table class="table table-responsive table-striped table-hover table-condensed">
                     <thead>
