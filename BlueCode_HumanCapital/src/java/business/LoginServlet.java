@@ -42,7 +42,7 @@ public class LoginServlet extends HttpServlet {
         
         if (DatabaseConnector.loginSuccessful(username, password)) {
             request.setAttribute(Keys.USERNAME, username);
-            url = "/index.jsp";
+            url = "/CandidatosIndexServlet";
         } else {
             request.setAttribute(Keys.LOGIN_SUCCESS, "false");
             url = "/login.jsp";
