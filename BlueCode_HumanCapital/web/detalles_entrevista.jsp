@@ -31,30 +31,16 @@
                 <div class="form-group">
                     <label for="candidato" class="col-sm-2 control-label">Candidato</label>
                     <div class="col-sm-10">
-                        <select class="form-control" name="candidato" id="select-candidato" disabled>
-                        <%
-                            for (Candidato can : candidatos) {
-                        %>
-                            <option value="<%= can.getId() %>"><%= can.getNombres() %></option>
-                        <%
-                            }
-                        %>
-                        </select> 
+                        <input class="form-control" type="text" value="<%= entrevista.getCandidato().getNombres() %>" readonly>
+                        <input class="form-control" type="hidden" name="candidato" value="<%= entrevista.getCandidatoID() %>">
                     </div>
                 </div>
                 
                 <div class="form-group">
                     <label for="entrevistador" class="col-sm-2 control-label">Entrevistador</label>
                     <div class="col-sm-10">
-                        <select class="form-control" name="entrevistador" id="select-entrevistador" disabled>
-                        <%
-                            for (Empleado ent : entrevistadores) {
-                        %>
-                            <option value="<%= ent.getID() %>"><%= ent.getNombre() %></option>
-                        <%
-                            }
-                        %>
-                        </select>
+                        <input class="form-control" type="text" value="<%= entrevista.getEntrevistador().getNombre() %>" readonly>
+                        <input class="form-control" type="hidden" name="entrevistador" value="<%= entrevista.getEntrevistadorID() %>">
                     </div>
                 </div>
                 
@@ -63,21 +49,21 @@
                     <div class="col-sm-10">
                         <% DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
                            String fecha = df.format(entrevista.getFecha()); %>
-                        <input class="form-control datepicker" type="text" name="fecha" value="<%= fecha %>" readonly>
+                        <input class="form-control datepicker editable" type="text" name="fecha" value="<%= fecha %>" readonly>
                     </div>
                 </div>
                 
                 <div class="form-group">
                     <label for="plataforma" class="col-sm-2 control-label">Plataforma</label>
                     <div class="col-sm-10">
-                        <input class="form-control" type="text" name="plataforma" value="<%= entrevista.getPlataforma() %>" readonly>
+                        <input class="form-control editable" type="text" name="plataforma" value="<%= entrevista.getPlataforma() %>" readonly>
                     </div>
                 </div>
                 
                 <div class="form-group">
                     <label for="feedback" class="col-sm-2 control-label">Feedback</label>
                     <div class="col-sm-10">
-                        <textarea class="form-control" name="feedback" readonly><%= entrevista.getFeedback() %></textarea>
+                        <textarea class="form-control editable" name="feedback" readonly><%= entrevista.getFeedback() %></textarea>
                     </div>
                 </div>
                     
@@ -92,12 +78,10 @@
         </div>
         <script>
             function hacerEditable() {
-                var inputs = document.getElementsByClassName("form-control");
+                var inputs = document.getElementsByClassName("editable");
                 for (i = 0; i < inputs.length; i++) {
                     inputs[i].readOnly = false;
                 }
-                document.getElementById("select-candidato").disabled = false;
-                document.getElementById("select-entrevistador").disabled = false;
                 document.getElementById("update-btn").disabled = false;
                 document.getElementById("edit-btn").disabled = true;
             }

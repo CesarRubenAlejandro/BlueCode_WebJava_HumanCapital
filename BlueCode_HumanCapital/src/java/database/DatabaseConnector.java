@@ -109,4 +109,8 @@ public class DatabaseConnector {
     public static boolean loginSuccessful(String username, String password) {
         return AdminIO.loginSuccessful(con, username, password);
     }
+    
+    public static ArrayList<Reporte> getReportes(){
+        return ReporteIO.getReportes(con);
+    }
 }

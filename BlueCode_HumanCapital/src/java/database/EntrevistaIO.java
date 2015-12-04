@@ -110,7 +110,10 @@ public class EntrevistaIO {
                 auxEntrevista.setFecha(rsEntrevista.getDate("fecha"));
                 auxEntrevista.setPlataforma(rsEntrevista.getString("plataforma"));
                 auxEntrevista.setFeedback(rsEntrevista.getString("feedback"));
-
+                
+                auxEntrevista.setCandidato(DatabaseConnector.getCandidato(auxEntrevista.getCandidatoID()));
+                auxEntrevista.setEntrevistador(DatabaseConnector.getEmpleado(auxEntrevista.getEntrevistadorID()));
+                
                 return auxEntrevista;
             }
         } catch (SQLException ex) {
@@ -122,14 +125,13 @@ public class EntrevistaIO {
     public static void modificarEntrevista(Connection con, Entrevista entrevista) {
         try {
             PreparedStatement stmtEntrevista = con.prepareStatement("UPDATE Entrevistas "
-                    + "SET "
-                    + "WHERE ID = " + entrevista.getEntrevistaID());
+                    + "SET candidatoID = ?, entrevistadorID = ?, fecha = ?, plataforma = ?, feedback = ? " 
+                    + "WHERE entrevistaID = " + entrevista.getEntrevistaID());
             stmtEntrevista.setInt(1, entrevista.getCandidatoID());
             stmtEntrevista.setInt(2, entrevista.getEntrevistadorID());
             stmtEntrevista.setTimestamp(3, new java.sql.Timestamp(entrevista.getFecha().getTime()));
-            stmtEntrevista.setInt(4, entrevista.getEntrevistaID());
-            stmtEntrevista.setString(5, entrevista.getPlataforma());
-            stmtEntrevista.setString(6, entrevista.getFeedback());
+            stmtEntrevista.setString(4, entrevista.getPlataforma());
+            stmtEntrevista.setString(5, entrevista.getFeedback());
             stmtEntrevista.executeUpdate();
             
         } catch (SQLException ex) {
