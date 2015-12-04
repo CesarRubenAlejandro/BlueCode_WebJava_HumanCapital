@@ -16,121 +16,152 @@
 
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Detalles candidato</title>
-    </head>
+    <jsp:include page="head.html"></jsp:include>
     <body>
-        <h1>Detalles de <%=candidato.getNombres()%> <%= candidato.getApellidos()%></h1>
-        <form action="CandidatosDetallesServlet">
-            <input type="hidden" name="idCandidato" value="<%=candidato.getId()%>">
-            <table>
-                <tr>
-                    <td>Estado</td>
-                    <td>
-                        <select id="estadoBox" name="estado" disabled>
-                            <option><%=Candidato.PENDIENTE%></option>
-                            <option><%=Candidato.ACEPTADO%></option>
-                            <option><%=Candidato.RECHAZADO%></option>
+        <div id="wrapper">
+        <jsp:include page="sidebar.html"></jsp:include>
+        <div id="page-content-wrapper">
+            <h2>Detalles de <%=candidato.getNombres()%> <%= candidato.getApellidos()%></h2>
+            <form class="form-horizontal col-md-9" action="CandidatosDetallesServlet">
+                <input type="hidden" name="idCandidato" value="<%=candidato.getId()%>">
+                
+                <div class="form-group">
+                    <label for="estado" class="col-sm-2 control-label">Estado</label>
+                    <div class="col-sm-10">
+                        <select id="estadoBox" class="form-control" name="estado" disabled>
+                                <option><%=Candidato.PENDIENTE%></option>
+                                <option><%=Candidato.ACEPTADO%></option>
+                                <option><%=Candidato.RECHAZADO%></option>
                         </select> 
-                    </td>
-                </tr>
-                <tr>
-                    <td>Nombre</td>
-                    <td><input class="inputFields" type="text" name="nombres" value="<%=candidato.getNombres()%>" readonly></td>
-                </tr>
-                <tr>
-                    <td>Apellidos</td>
-                    <td><input class="inputFields" type="text" name="apellidos" value="<%= candidato.getApellidos()%>" readonly></td>
-                </tr>
-                <tr>
-                    <td>Direccion</td>
-                    <td><input class="inputFields" type="text" name="direccion" value="<%=candidato.getDireccion()%>" readonly></td>
-                </tr>
-                <tr>
-                    <td>Telefono</td>
-                    <td><input class="inputFields" type="text" name="telefono" value="<%=candidato.getTelefono()%>" readonly></td>
-                </tr>
-                <tr>
-                    <td>Correo</td>
-                    <td><input class="inputFields" type="text" name="email" value="<%=candidato.getEmail()%>" readonly></td>
-                </tr>
-                <tr>
-                    <td>Titulo</td>
-                    <td><input class="inputFields" type="text" name="titulo" value="<%=candidato.getTitulo()%>" readonly></td>
-                </tr>
-                <tr>
-                    <td>Universidad</td>
-                    <td><input class="inputFields" type="text" name="universidad" value="<%=candidato.getUniversidad()%>" readonly></td>
-                </tr>
-                <tr>
-                    <td>Expectativas Económicas</td>
-                    <td><input class="inputFields" type="text" name="expectativas" value="<%=candidato.getExpectativas()%>" readonly></td>
-                </tr>
-            </table>
-            <table id="tablaCertificados">
-                <tr>
-                    <td>Certificados</td>                   
-                </tr>
-                <%
-                    if (certificados.isEmpty()) {
-                %> 
-                <tr>
-                    <td>
-                        <input class="inputFields" type="text" name="certificados" readOnly> 
-                        <button class="borrarTrabajoBtn" type="button" onclick="borraCertificado(this)" disabled>borrar</button>
-                        <button class="nuevoTrabajoBtn" type="button" onclick="agregaCertificado()" disabled>otro</button>
-                    </td>
-                </tr> 
-                <%
-                } else {
-                    for (String certificado : certificados) {
-                %> 
-                <tr>
-                    <td>
-                        <input class="inputFields" type="text" name="certificados" value="<%=certificado%>" readOnly> 
-                        <button class="borrarTrabajoBtn" type="button" onclick="borraCertificado(this)" disabled>borrar</button>
-                        <button class="nuevoTrabajoBtn" type="button" onclick="agregaCertificado()" disabled>otro</button>
-                    </td>
-                </tr>
-                <%
-                        }
-                    }
-                %>
-            </table>
-            <table id="tablaTrabajosAnteriores">
-                <tr>
-                    <td>Trabajos anteriores</td>                   
-                </tr>
+                    </div>
+                </div>
+                    
+                <div class="form-group">
+                    <label for="nombres" class="col-sm-2 control-label">Nombre de pila</label>
+                    <div class="col-sm-10">
+                        <input class="form-control inputFields" type="text" name="nombres" value="<%=candidato.getNombres()%>" readonly>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="apellidos" class="col-sm-2 control-label">Apellidos</label>
+                    <div class="col-sm-10">
+                        <input class="form-control inputFields" type="text" name="apellidos" value="<%= candidato.getApellidos()%>" readonly>
+                    </div>
+                </div>
+                    
+                <div class="form-group">
+                    <label for="direccion" class="col-sm-2 control-label">Dirección</label>
+                    <div class="col-sm-10">
+                        <input class="form-control inputFields" type="text" name="direccion" value="<%=candidato.getDireccion()%>" readonly>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="telefono" class="col-sm-2 control-label">Teléfono</label>
+                    <div class="col-sm-10">
+                        <input class="form-control inputFields" type="text" name="telefono" value="<%=candidato.getTelefono()%>" readonly>
+                    </div>
+                </div>
+                    
+                <div class="form-group">
+                    <label for="email" class="col-sm-2 control-label">Correo</label>
+                    <div class="col-sm-10">
+                        <input class="form-control inputFields" type="text" name="email" value="<%=candidato.getEmail()%>" readonly>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="titulo" class="col-sm-2 control-label">Título</label>
+                    <div class="col-sm-10">
+                        <input class="form-control inputFields" type="text" name="titulo" value="<%=candidato.getTitulo()%>" readonly>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="universidad" class="col-sm-2 control-label">Universidad</label>
+                    <div class="col-sm-10">
+                        <input class="form-control inputFields" type="text" name="universidad" value="<%=candidato.getUniversidad()%>" readonly>
+                    </div>
+                </div>
 
-                <% if (trabajosAnt.isEmpty()) {
-                %> 
-                <tr>
-                    <td>
-                        <input class="inputFields" type="text" name="trabajos" readOnly> 
-                        <button class="borrarTrabajoBtn" type="button" onclick="borraTrabajo(this)" disabled>borrar</button>
-                        <button class="nuevoTrabajoBtn" type="button" onclick="agregaTrabajo()" disabled>otro</button>
-                    </td>
-                </tr>
-                <%
-                } else {
-                    for (String trabajo : trabajosAnt) {
-                %> 
-                <tr>
-                    <td>
-                        <input class="inputFields" type="text" name="trabajos" value="<%=trabajo%>" readOnly> 
-                        <button class="borrarTrabajoBtn" type="button" onclick="borraTrabajo(this)" disabled>borrar</button>
-                        <button class="nuevoTrabajoBtn" type="button" onclick="agregaTrabajo()" disabled>otro</button>
-                    </td>
-                </tr>
-                <%
+                <div class="form-group">
+                    <label for="expectativas" class="col-sm-2 control-label">Expectativas económicas</label>
+                    <div class="col-sm-10">
+                        <input class="form-control inputFields" type="text" name="expectativas" value="<%=candidato.getExpectativas()%>" readonly>
+                    </div>
+                </div>
+                    
+                <table class="table table-condensed table-responsive">
+                    <tbody id="tablaCertificados">
+                    <tr>
+                        <td>Certificados</td>                   
+                    </tr>
+                    <%
+                        if (certificados.isEmpty()) {
+                    %> 
+                    <tr>
+                        <td>
+                            <input class="inputFields" type="text" name="certificados" readOnly> 
+                            <button class="btn btn-xs btn-danger borrarTrabajoBtn" type="button" onclick="borraCertificado(this)" disabled>borrar</button>
+                            <button class="btn btn-xs btn-primary nuevoTrabajoBtn" type="button" onclick="agregaCertificado()" disabled>otro</button>
+                        </td>
+                    </tr> 
+                    <%
+                    } else {
+                        for (String certificado : certificados) {
+                    %> 
+                    <tr>
+                        <td>
+                            <input class="inputFields" type="text" name="certificados" value="<%=certificado%>" readOnly> 
+                            <button class="btn btn-xs btn-danger borrarTrabajoBtn" type="button" onclick="borraCertificado(this)" disabled>borrar</button>
+                            <button class="btn btn-xs btn-primary nuevoTrabajoBtn" type="button" onclick="agregaCertificado()" disabled>otro</button>
+                        </td>
+                    </tr>
+                    <%
+                            }
                         }
-                    }
-                %>
-            </table>
-            <button type="button" id="EditarBtn" onclick="hacerEditable()">Editar</button>
-            <input type="submit" id="GuardarBtn" value="Guardar cambios" disabled>
-        </form>
+                    %>
+                    </tbody>
+                </table>
+                    
+                <table class="table table-condensed table-responsive">
+                    <tbody id="tablaTrabajosAnteriores">
+                    <tr>
+                        <td>Trabajos anteriores</td>                   
+                    </tr>
+
+                    <% if (trabajosAnt.isEmpty()) {
+                    %> 
+                    <tr>
+                        <td>
+                            <input class="inputFields" type="text" name="trabajos" readOnly> 
+                            <button class="btn btn-xs btn-danger borrarTrabajoBtn" type="button" onclick="borraTrabajo(this)" disabled>borrar</button>
+                            <button class="btn btn-xs btn-primary nuevoTrabajoBtn" type="button" onclick="agregaTrabajo()" disabled>otro</button>
+                        </td>
+                    </tr>
+                    <%
+                    } else {
+                        for (String trabajo : trabajosAnt) {
+                    %> 
+                    <tr>
+                        <td>
+                            <input class="inputFields" type="text" name="trabajos" value="<%=trabajo%>" readOnly> 
+                            <button class="btn btn-xs btn-danger borrarTrabajoBtn" type="button" onclick="borraTrabajo(this)" disabled>borrar</button>
+                            <button class="btn btn-xs btn-primary nuevoTrabajoBtn" type="button" onclick="agregaTrabajo()" disabled>otro</button>
+                        </td>
+                    </tr>
+                    <%
+                            }
+                        }
+                    %>
+                    </tbody>
+                </table>
+                <button class="btn btn-warning" type="button" id="EditarBtn" onclick="hacerEditable()">Editar</button>
+                <input class="btn btn-success" type="submit" id="GuardarBtn" value="Guardar cambios" disabled>
+            </form>
+        </div>
+        </div>
 
         <script>
             var index = "<%=candidato.getEstado()%>";
@@ -169,11 +200,13 @@
                 };
                 btnBorrar.innerHTML = "borrar";
                 btnBorrar.type = "button";
+                btnBorrar.className = "btn btn-xs btn-danger";
 
                 var btnAgregar = document.createElement("button");
                 btnAgregar.onclick = agregaTrabajo;
                 btnAgregar.innerHTML = "otro";
                 btnAgregar.type = "button";
+                btnAgregar.className = "btn btn-xs btn-primary";
 
                 columna.appendChild(inputNodo);
                 columna.appendChild(btnBorrar);
@@ -204,11 +237,13 @@
                 };
                 btnBorrar.innerHTML = "borrar";
                 btnBorrar.type = "button";
+                btnBorrar.className = "btn btn-xs btn-danger";
 
                 var btnAgregar = document.createElement("button");
                 btnAgregar.onclick = agregaCertificado;
                 btnAgregar.innerHTML = "otro";
                 btnAgregar.type = "button";
+                btnAgregar.className = "btn btn-xs btn-primary";
 
                 columna.appendChild(inputNodo);
                 columna.appendChild(btnBorrar);

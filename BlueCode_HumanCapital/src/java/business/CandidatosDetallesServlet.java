@@ -45,7 +45,6 @@ public class CandidatosDetallesServlet extends HttpServlet {
             rd.forward(request, response);
         } else {
             int idCandidato = Integer.parseInt(request.getParameter("idCandidato"));
-            System.out.println("ID: " + idCandidato);
             String nombres = request.getParameter("nombres");
             String apellidos = request.getParameter("apellidos");
             String expectativas = request.getParameter("expectativas");
