@@ -52,9 +52,17 @@ public class ReporteIO {
                         reporteActual.setTipoCandidato("Rechazado");
                         break;
                 }
+                reporteActual.setUniversidadCandidato(auxCandidato.getUniversidad());
                 reporteActual.setTituloCandidato(auxCandidato.getTitulo());
-                for (String cert: auxCandidato.getCertificados()){
-                    reporteActual.setCertificadosCandidato(cert + ", ");
+                if (auxCandidato.getCertificados().isEmpty()){
+                    reporteActual.setCertificadosCandidato("-");
+                } else {
+                    String certificados = "";
+                    for (int i =0; i< auxCandidato.getCertificados().size(); i++){
+                        String cert = auxCandidato.getCertificados().get(i);
+                        certificados += (i==auxCandidato.getCertificados().size()-1? cert: " " + cert + ", ");
+                    }
+                    reporteActual.setCertificadosCandidato(certificados);
                 }
                 // obtener y guardar informacion de empleado
                 Statement stmtEmpleado = con.createStatement();
